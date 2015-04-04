@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CS470Final</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_main_map">Map</string>
+    <string name="google_maps_key">test</string>
+    <string name="title_activity_info_screen">infoScreen</string>
+
+</resources>
