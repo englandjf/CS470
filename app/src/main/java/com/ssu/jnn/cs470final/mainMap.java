@@ -10,6 +10,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.parse.Parse;
+import com.parse.ParseObject;
 
 //
 public class mainMap extends FragmentActivity implements GoogleMap.OnMarkerClickListener{
@@ -19,9 +21,13 @@ public class mainMap extends FragmentActivity implements GoogleMap.OnMarkerClick
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Parse.enableLocalDatastore(this);
+        Parse.initialize(this, "biTBkGGBIx7X5Ez7YVcD5poHjgH5puf7qFCQr56l", "Xo6xTmbGMM1fvI9DW16aopFW7S7fOoRRulnahT5H");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_map);
         setUpMapIfNeeded();
+
     }
 
     @Override
@@ -74,7 +80,7 @@ public class mainMap extends FragmentActivity implements GoogleMap.OnMarkerClick
     public boolean onMarkerClick(Marker marker) {
         Log.i("test","test");
         Intent intent = new Intent(new Intent(mainMap.this,infoScreen.class));
-        intent.putExtra("markerName",marker.getTitle());
+        intent.putExtra("mName",marker.getTitle());
         startActivity(intent);
 
         return false;

@@ -1,15 +1,22 @@
 package com.ssu.jnn.cs470final;
 
+import android.support.v4.view.GestureDetectorCompat;
+import android.support.v4.view.MotionEventCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.widget.TextView;
 //
 
-public class infoScreen extends ActionBarActivity {
+public class infoScreen extends ActionBarActivity{
 
     private String markerName;
+    TextView gestureEvent;
+    TextView tv;
 
     // I am a comment!
     //test
@@ -19,9 +26,11 @@ public class infoScreen extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_screen);
         Bundle extras = getIntent().getExtras();
-        markerName = extras.getString(markerName);
-        TextView tv = (TextView) findViewById(R.id.textView);
+        markerName = extras.getString("mName");
+        tv = (TextView) findViewById(R.id.textView);
         tv.setText(markerName);
+        //detect swipe
+        gestureEvent = (TextView)findViewById(R.id.GestureEvent);
     }
 
 
@@ -46,4 +55,44 @@ public class infoScreen extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    //http://android-er.blogspot.com/2011/11/detect-swipe-using-simpleongestureliste.html
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        // TODO Auto-generated method stub
+        return gestureDetector.onTouchEvent(event);
+    }
+
+    GestureDetector.SimpleOnGestureListener simpleOnGestureListener
+            = new GestureDetector.SimpleOnGestureListener(){
+
+
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
+                               float velocityY) {
+            float sensitvity = 50;
+
+            // TODO Auto-generated method stub
+            if((e1.getX() - e2.getX()) > sensitvity){
+            }
+            else if((e2.getX() - e1.getX()) > sensitvity){
+                finish();
+            }else{
+            }
+
+            if((e1.getY() - e2.getY()) > sensitvity){
+            }else if((e2.getY() - e1.getY()) > sensitvity){
+            }else{
+            }
+
+
+
+            return super.onFling(e1, e2, velocityX, velocityY);
+        }
+    };
+
+    GestureDetector gestureDetector
+            = new GestureDetector(simpleOnGestureListener);
+
+
 }
