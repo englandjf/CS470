@@ -12,6 +12,7 @@ public class infoScreen extends ActionBarActivity {
     private String markerName;
 
     // I am a comment!
+    //test
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
