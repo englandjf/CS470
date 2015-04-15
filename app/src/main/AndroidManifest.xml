@@ -43,6 +43,10 @@
             android:name=".infoScreen"
             android:label="@string/title_activity_info_screen" >
         </activity>
+        <activity
+            android:name=".commentView"
+            android:label="@string/title_activity_comment_view" >
+        </activity>
     </application>
 
 </manifest>

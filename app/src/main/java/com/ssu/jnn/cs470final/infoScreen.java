@@ -1,5 +1,6 @@
 package com.ssu.jnn.cs470final;
 
+import android.content.Intent;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v7.app.ActionBarActivity;
@@ -10,6 +11,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.widget.TextView;
+
+import com.parse.FindCallback;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
+import java.lang.reflect.Array;
+import java.text.ParseException;
+import java.util.List;
 //
 
 public class infoScreen extends ActionBarActivity{
@@ -17,6 +26,8 @@ public class infoScreen extends ActionBarActivity{
     private String markerName;
     TextView gestureEvent;
     TextView tv;
+    boolean dataLoaded;
+    List comments;
 
     // I am a comment!
     //test
@@ -31,6 +42,8 @@ public class infoScreen extends ActionBarActivity{
         tv.setText(markerName);
         //detect swipe
         gestureEvent = (TextView)findViewById(R.id.GestureEvent);
+        dataLoaded = false;
+        getData();
     }
 
 
@@ -73,15 +86,22 @@ public class infoScreen extends ActionBarActivity{
             float sensitvity = 50;
 
             // TODO Auto-generated method stub
-            if((e1.getX() - e2.getX()) > sensitvity){
+            //left
+            if((e1.getX() - e2.getX()) > sensitvity && dataLoaded){
+                Intent intent = new Intent(new Intent(infoScreen.this,commentView.class));
+                //intent.putExtra("comments",comments.toArray());
+                startActivity(intent);
             }
+            //right
             else if((e2.getX() - e1.getX()) > sensitvity){
                 finish();
             }else{
             }
-
+            //up
             if((e1.getY() - e2.getY()) > sensitvity){
-            }else if((e2.getY() - e1.getY()) > sensitvity){
+            }
+            //down
+            else if((e2.getY() - e1.getY()) > sensitvity){
             }else{
             }
 
@@ -90,6 +110,30 @@ public class infoScreen extends ActionBarActivity{
             return super.onFling(e1, e2, velocityX, velocityY);
         }
     };
+
+    private void getData() {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("markerInfo");
+        query.whereEqualTo("placeName", "test");
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> parseObjects, com.parse.ParseException e) {
+                if (e == null) {
+                    dataLoaded = true;
+                    ParseObject temp = parseObjects.get(0);
+                    comments = temp.getList("comments");
+                    tv.setText("" + comments.get(0));
+                    Log.d("Comments", "Size " + comments.size());
+                } else {
+                    //Log.d("score", "Error: " + e.getMessage());
+                }
+            }
+
+        });
+    }
+
+
+
+
+
 
     GestureDetector gestureDetector
             = new GestureDetector(simpleOnGestureListener);
