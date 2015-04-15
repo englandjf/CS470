@@ -31,6 +31,7 @@ public class infoScreen extends ActionBarActivity{
 
     // I am a comment!
     //test
+    //Jamesy comment
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
