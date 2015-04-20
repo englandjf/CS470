@@ -8,5 +8,6 @@
     <string name="google_maps_key">test</string>
     <string name="title_activity_info_screen">infoScreen</string>
     <string name="title_activity_comment_view">commentView</string>
+    <string name="title_activity_main_menu">mainMenu</string>
 
 </resources>
