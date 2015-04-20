@@ -1,10 +1,12 @@
 package com.ssu.jnn.cs470final;
 
 import android.content.Intent;
+import android.provider.SyncStateContract;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -35,6 +37,7 @@ public class mainMap extends FragmentActivity implements GoogleMap.OnMarkerClick
         super.onResume();
         setUpMapIfNeeded();
     }
+
 
     /**
      * Sets up the map if it is possible to do so (i.e., the Google Play services APK is correctly
@@ -72,8 +75,9 @@ public class mainMap extends FragmentActivity implements GoogleMap.OnMarkerClick
      */
     private void setUpMap() {
         mMap.setOnMarkerClickListener(this);
-        Marker temp1 = mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
-        Marker temp2 = mMap.addMarker(new MarkerOptions().position(new LatLng(38.341104, -122.674610)).title("Sonoma State University"));
+        //Marker temp1 = mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
+        Marker temp1 = mMap.addMarker(new MarkerOptions().position(new LatLng(38.341104, -122.674610)).title("Sonoma State University"));
+        Marker temp2 = mMap.addMarker(new MarkerOptions().position(new LatLng(38.344508, -122.711653)).title("McDonalds"));
     }
 
 
