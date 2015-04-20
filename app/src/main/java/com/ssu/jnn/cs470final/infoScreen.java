@@ -18,6 +18,7 @@ import com.parse.ParseQuery;
 
 import java.lang.reflect.Array;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 //
 
@@ -89,8 +90,12 @@ public class infoScreen extends ActionBarActivity{
             // TODO Auto-generated method stub
             //left
             if((e1.getX() - e2.getX()) > sensitvity && dataLoaded){
+                String [] listArray = new String[comments.size()];
+                for(int i = 0; i < comments.size();i++) {
+                    listArray[i] = comments.get(i).toString();
+                }
                 Intent intent = new Intent(new Intent(infoScreen.this,commentView.class));
-                //intent.putExtra("comments",comments.toArray());
+                intent.putExtra("comments",listArray);
                 startActivity(intent);
             }
             //right
@@ -114,17 +119,17 @@ public class infoScreen extends ActionBarActivity{
 
     private void getData() {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("markerInfo");
-        query.whereEqualTo("placeName", "test");
+        query.whereEqualTo("placeName", markerName);
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> parseObjects, com.parse.ParseException e) {
                 if (e == null) {
                     dataLoaded = true;
                     ParseObject temp = parseObjects.get(0);
                     comments = temp.getList("comments");
-                    tv.setText("" + comments.get(0));
+                    //tv.setText("" + comments.get(0));
                     Log.d("Comments", "Size " + comments.size());
                 } else {
-                    //Log.d("score", "Error: " + e.getMessage());
+                    Log.d("score", "Error: " + e.getMessage());
                 }
             }
 

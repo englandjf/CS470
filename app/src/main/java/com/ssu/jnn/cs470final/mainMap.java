@@ -72,13 +72,13 @@ public class mainMap extends FragmentActivity implements GoogleMap.OnMarkerClick
      */
     private void setUpMap() {
         mMap.setOnMarkerClickListener(this);
-        temp = mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
+        Marker temp1 = mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
+        Marker temp2 = mMap.addMarker(new MarkerOptions().position(new LatLng(38.341104, -122.674610)).title("Sonoma State University"));
     }
 
 
     @Override
     public boolean onMarkerClick(Marker marker) {
-        Log.i("test","test");
         Intent intent = new Intent(new Intent(mainMap.this,infoScreen.class));
         intent.putExtra("mName",marker.getTitle());
         startActivity(intent);

@@ -12,7 +12,7 @@ import android.widget.ListView;
 
 public class commentView extends ActionBarActivity {
 
-    String comments[];
+    String[] comments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,13 +21,13 @@ public class commentView extends ActionBarActivity {
         //String[] codeLearnChapters = new String[] { "Android Introduction","Android Setup/Installation","Android Hello World","Android Layouts/Viewgroups","Android Activity & Lifecycle","Intents in Android"};
 
         //get comments
-        //Bundle extras = getIntent().getExtras();
-        //comments = extras.getStringArray("comments");
-       // Log.d("Comments2","Comments" + comments[0]);
+        Bundle extras = getIntent().getExtras();
+        comments = extras.getStringArray("comments");
+        Log.d("Comments2","Comments" + comments[0]);
 
-        //ArrayAdapter<String> listAdapter= new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, comments);
-        //ListView commentList = (ListView)findViewById(R.id.listView);
-        //commentList.setAdapter(listAdapter);
+        ArrayAdapter<String> listAdapter= new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, comments);
+        ListView commentList = (ListView)findViewById(R.id.listView);
+        commentList.setAdapter(listAdapter);
     }
 
 
