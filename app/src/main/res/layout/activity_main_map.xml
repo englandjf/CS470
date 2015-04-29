@@ -13,23 +13,28 @@
 
 
 
-    <Button
+    <ImageButton
     android:id="@+id/settingsButton"
-    android:layout_width="100dp"
-    android:layout_height="50dp"
+    android:layout_width="64dp"
+    android:layout_height="64dp"
     android:layout_gravity="right|top"
     android:layout_marginTop="5dp"
     android:layout_marginRight="11dp"
     android:text="Settings"
-    android:onClick="ButtonOnClick"/>
+    android:background="@null"
+    android:onClick="ButtonOnClick"
+        android:src="@mipmap/gear" />
 
-    <Button
+    <ImageButton
         android:id="@+id/addButton"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:layout_gravity="left|top"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="11dp"
         android:text="Add Marker"
-        android:onClick="ButtonOnClick"/>
+        android:background="@null"
+        android:onClick="ButtonOnClick"
+        android:src="@mipmap/add"
+        android:cropToPadding="false" />
 </FrameLayout>
