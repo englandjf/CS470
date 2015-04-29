@@ -5,6 +5,7 @@ import android.provider.SyncStateContract;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -76,6 +77,7 @@ public class mainMap extends FragmentActivity implements GoogleMap.OnMarkerClick
     private void setUpMap() {
         mMap.setOnMarkerClickListener(this);
         //Marker temp1 = mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
+        // Format for markers.
         Marker temp1 = mMap.addMarker(new MarkerOptions().position(new LatLng(38.341104, -122.674610)).title("Sonoma State University"));
         Marker temp2 = mMap.addMarker(new MarkerOptions().position(new LatLng(38.344508, -122.711653)).title("McDonalds"));
     }
@@ -83,10 +85,26 @@ public class mainMap extends FragmentActivity implements GoogleMap.OnMarkerClick
 
     @Override
     public boolean onMarkerClick(Marker marker) {
+        // Activated on any marker click.
+        // How to open new activities.
         Intent intent = new Intent(new Intent(mainMap.this,infoScreen.class));
+        // Pass additional vars to the new class.
         intent.putExtra("mName",marker.getTitle());
         startActivity(intent);
 
         return false;
+    }
+
+    public void ButtonOnClick(View v) {
+        switch(v.getId()){
+            case R.id.settingsButton:
+                Log.i("Clicked", "1");
+                Intent prefIntent = new Intent(new Intent(mainMap.this,preferences.class));
+                startActivity(prefIntent);
+                break;
+            case R.id.addButton:
+                Log.i("Clicked","2");
+                break;
+        }
     }
 }

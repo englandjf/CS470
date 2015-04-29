@@ -20,7 +20,8 @@
     android:layout_gravity="right|top"
     android:layout_marginTop="5dp"
     android:layout_marginRight="11dp"
-    android:text="Settings"/>
+    android:text="Settings"
+    android:onClick="ButtonOnClick"/>
 
     <Button
         android:id="@+id/addButton"
@@ -29,5 +30,6 @@
         android:layout_gravity="left|top"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="11dp"
-        android:text="Add Marker"/>
+        android:text="Add Marker"
+        android:onClick="ButtonOnClick"/>
 </FrameLayout>
