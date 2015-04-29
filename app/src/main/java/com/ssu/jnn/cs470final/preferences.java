@@ -44,8 +44,6 @@ public class preferences extends ActionBarActivity {
         allBoxes[12] = (CheckBox)findViewById(R.id.checkBox13);
 
 
-
-
     }
 
 
