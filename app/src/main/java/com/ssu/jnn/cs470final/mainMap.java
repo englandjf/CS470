@@ -1,26 +1,41 @@
 package com.ssu.jnn.cs470final;
 
+import android.content.Context;
 import android.content.Intent;
+import android.location.Criteria;
+import android.location.GpsStatus;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.provider.SyncStateContract;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.parse.Parse;
 import com.parse.ParseObject;
 
+import java.util.List;
+
 //
-public class mainMap extends FragmentActivity implements GoogleMap.OnMarkerClickListener{
+public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClickListener {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     private Marker temp;
+
+    LocationManager mLocationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +44,33 @@ public class mainMap extends FragmentActivity implements GoogleMap.OnMarkerClick
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_map);
+
+
+
+        mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+//        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000,
+//                .1f, mLocationListener);
+
+        // Need to get best provider.
+
+
+
         setUpMapIfNeeded();
 
+        Location location = mLocationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        if (location != null) {
+            Log.d("Location", "" + location.getLatitude());
+
+            LatLng temp = new LatLng(location.getLatitude(),location.getLongitude());
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(temp,15.0f));
+        }
+        else {
+            Log.d("LocInfo", "Location was null");
+        }
+
     }
+
 
     @Override
     protected void onResume() {
@@ -76,10 +115,10 @@ public class mainMap extends FragmentActivity implements GoogleMap.OnMarkerClick
      */
     private void setUpMap() {
         mMap.setOnMarkerClickListener(this);
-        //Marker temp1 = mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
         // Format for markers.
         Marker temp1 = mMap.addMarker(new MarkerOptions().position(new LatLng(38.341104, -122.674610)).title("Sonoma State University"));
         Marker temp2 = mMap.addMarker(new MarkerOptions().position(new LatLng(38.344508, -122.711653)).title("McDonalds"));
+        //centerOnMyLocation();
     }
 
 
@@ -87,24 +126,28 @@ public class mainMap extends FragmentActivity implements GoogleMap.OnMarkerClick
     public boolean onMarkerClick(Marker marker) {
         // Activated on any marker click.
         // How to open new activities.
-        Intent intent = new Intent(new Intent(mainMap.this,infoScreen.class));
+        Intent intent = new Intent(new Intent(mainMap.this, infoScreen.class));
         // Pass additional vars to the new class.
-        intent.putExtra("mName",marker.getTitle());
+        intent.putExtra("mName", marker.getTitle());
         startActivity(intent);
 
         return false;
     }
 
     public void ButtonOnClick(View v) {
-        switch(v.getId()){
+        switch (v.getId()) {
             case R.id.settingsButton:
                 Log.i("Clicked", "1");
-                Intent prefIntent = new Intent(new Intent(mainMap.this,preferences.class));
+                Intent prefIntent = new Intent(new Intent(mainMap.this, preferences.class));
                 startActivity(prefIntent);
                 break;
             case R.id.addButton:
-                Log.i("Clicked","2");
+                Log.i("Clicked", "2");
+                Intent addMarkerIntent = new Intent(new Intent(mainMap.this, addMarker.class));
+                startActivity(addMarkerIntent);
                 break;
         }
     }
 }
+
+

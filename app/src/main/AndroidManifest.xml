@@ -55,6 +55,10 @@
             android:name=".preferences"
             android:label="@string/title_activity_preferences" >
         </activity>
+        <activity
+            android:name=".addMarker"
+            android:label="@string/title_activity_add_marker" >
+        </activity>
     </application>
 
 </manifest>
