@@ -59,6 +59,10 @@
             android:name=".addMarker"
             android:label="@string/title_activity_add_marker" >
         </activity>
+        <activity
+            android:name=".signUp"
+            android:label="@string/title_activity_sign_up" >
+        </activity>
     </application>
 
 </manifest>

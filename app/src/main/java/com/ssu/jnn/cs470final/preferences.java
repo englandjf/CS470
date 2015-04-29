@@ -40,5 +40,14 @@ public class preferences extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void ButtonOnClick(View v) {
+        switch (v.getId()) {
+            case R.id.signupbutton:
+                Log.i("Clicked", "1");
+                Intent signupIntent = new Intent(new Intent(preferences.this, signUp.class));
+                startActivity(signupIntent);
+                break;
+        }
+    }
 
 }

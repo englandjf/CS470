@@ -11,5 +11,6 @@
     <string name="title_activity_main_menu">mainMenu</string>
     <string name="title_activity_preferences">preferences</string>
     <string name="title_activity_add_marker">addMarker</string>
+    <string name="title_activity_sign_up">signUp</string>
 
 </resources>
