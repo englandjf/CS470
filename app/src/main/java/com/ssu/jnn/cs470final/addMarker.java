@@ -4,8 +4,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
+import com.parse.ParseException;
 
 import java.util.ArrayList;
 
@@ -60,5 +63,10 @@ public class addMarker extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void ButtonOnClick(View v){
+        //only one button
+        //do this
     }
 }

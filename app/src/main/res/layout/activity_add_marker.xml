@@ -58,6 +58,7 @@
         android:text="Add"
         android:id="@+id/submitMarker"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="ButtonOnClick"/>
 
 </RelativeLayout>
