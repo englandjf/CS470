@@ -4,6 +4,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+
+import java.util.ArrayList;
 
 
 public class addMarker extends ActionBarActivity {
@@ -12,6 +16,27 @@ public class addMarker extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_marker);
+
+        ArrayList<String> categoriesArray = new ArrayList();
+        categoriesArray.add("Art Museums");
+        categoriesArray.add("Comedy");
+        categoriesArray.add("Charity Event");
+        categoriesArray.add("Food and Drink");
+        categoriesArray.add("Festivals");
+        categoriesArray.add("Family Event");
+        categoriesArray.add("Lectures and Workshops");
+        categoriesArray.add("Music");
+        categoriesArray.add("Movies");
+        categoriesArray.add("Night Life");
+        categoriesArray.add("Shopping");
+        categoriesArray.add("Sports");
+        categoriesArray.add("Theatre");
+
+        Spinner spinner = (Spinner) findViewById(R.id.categories);
+        ArrayAdapter<String> categoriesArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, categoriesArray);
+
+        categoriesArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(categoriesArrayAdapter);
     }
 
 

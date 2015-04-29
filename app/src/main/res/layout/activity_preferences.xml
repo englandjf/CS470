@@ -19,7 +19,7 @@
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Art"
+        android:text="Art Museums"
         android:id="@+id/checkBox"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -28,37 +28,37 @@
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Night Life"
+        android:text="Family Events"
         android:id="@+id/checkBox2"
-        android:layout_below="@+id/checkBox"
+        android:checked="false"
+        android:layout_below="@+id/checkBox5"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:checked="false" />
+        android:layout_alignParentStart="true" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Comedy"
         android:id="@+id/checkBox3"
-        android:layout_below="@+id/checkBox2"
+        android:checked="false"
+        android:layout_below="@+id/checkBox"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:checked="false" />
+        android:layout_alignParentStart="true" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Food and Drink"
         android:id="@+id/checkBox4"
-        android:layout_below="@+id/checkBox3"
+        android:checked="false"
+        android:layout_below="@+id/checkBox6"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:checked="false" />
+        android:layout_alignParentStart="true" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Music"
+        android:text="Festivals"
         android:id="@+id/checkBox5"
         android:layout_below="@+id/checkBox4"
         android:layout_alignParentLeft="true"
@@ -84,5 +84,85 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Charity Events"
+        android:id="@+id/checkBox6"
+        android:layout_below="@+id/checkBox3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lectures and Workshops"
+        android:id="@+id/checkBox7"
+        android:layout_below="@+id/checkBox2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Music"
+        android:id="@+id/checkBox8"
+        android:checked="false"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/checkBox7"
+        android:layout_toEndOf="@+id/checkBox7" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Movies"
+        android:id="@+id/checkBox9"
+        android:checked="false"
+        android:layout_above="@+id/checkBox6"
+        android:layout_alignLeft="@+id/checkBox8"
+        android:layout_alignStart="@+id/checkBox8" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Night Life"
+        android:id="@+id/checkBox10"
+        android:checked="false"
+        android:layout_above="@+id/checkBox4"
+        android:layout_alignLeft="@+id/checkBox9"
+        android:layout_alignStart="@+id/checkBox9" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Shopping"
+        android:id="@+id/checkBox11"
+        android:checked="false"
+        android:layout_below="@+id/checkBox10"
+        android:layout_alignRight="@+id/checkBox10"
+        android:layout_alignEnd="@+id/checkBox10" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sports "
+        android:id="@+id/checkBox12"
+        android:checked="false"
+        android:layout_below="@+id/checkBox11"
+        android:layout_alignLeft="@+id/checkBox11"
+        android:layout_alignStart="@+id/checkBox11" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Theatre"
+        android:id="@+id/checkBox13"
+        android:checked="false"
+        android:layout_above="@+id/checkBox7"
+        android:layout_alignLeft="@+id/checkBox12"
+        android:layout_alignStart="@+id/checkBox12" />
 
 </RelativeLayout>
