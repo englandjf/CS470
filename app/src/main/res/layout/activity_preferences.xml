@@ -72,7 +72,8 @@
         android:id="@+id/updatePrefs"
         android:layout_alignBottom="@+id/signupbutton"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:onClick="ButtonOnClick"/>
 
     <SeekBar
         android:layout_width="wrap_content"
