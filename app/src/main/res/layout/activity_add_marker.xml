@@ -36,7 +36,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:spinnerMode="dropdown"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true" />
 
     <EditText
         android:layout_width="wrap_content"

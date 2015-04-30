@@ -21,13 +21,13 @@ public class addMarker extends ActionBarActivity {
         setContentView(R.layout.activity_add_marker);
 
         ArrayList<String> categoriesArray = new ArrayList();
-        categoriesArray.add("Art Museums");
         categoriesArray.add("Comedy");
         categoriesArray.add("Charity Event");
         categoriesArray.add("Food and Drink");
         categoriesArray.add("Festivals");
         categoriesArray.add("Family Event");
         categoriesArray.add("Lectures and Workshops");
+        categoriesArray.add("Museums");
         categoriesArray.add("Music");
         categoriesArray.add("Movies");
         categoriesArray.add("Night Life");

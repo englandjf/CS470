@@ -29,19 +29,19 @@ public class preferences extends ActionBarActivity {
 
         //Store all checkboxes in array
         allBoxes = new CheckBox[13];
-        allBoxes[0] = (CheckBox)findViewById(R.id.checkBox);
-        allBoxes[1] = (CheckBox)findViewById(R.id.checkBox2);
-        allBoxes[2] = (CheckBox)findViewById(R.id.checkBox3);
-        allBoxes[3] = (CheckBox)findViewById(R.id.checkBox4);
-        allBoxes[4] = (CheckBox)findViewById(R.id.checkBox5);
-        allBoxes[5] = (CheckBox)findViewById(R.id.checkBox6);
-        allBoxes[6] = (CheckBox)findViewById(R.id.checkBox7);
-        allBoxes[7] = (CheckBox)findViewById(R.id.checkBox8);
-        allBoxes[8] = (CheckBox)findViewById(R.id.checkBox9);
-        allBoxes[9] = (CheckBox)findViewById(R.id.checkBox10);
-        allBoxes[10] = (CheckBox)findViewById(R.id.checkBox11);
-        allBoxes[11] = (CheckBox)findViewById(R.id.checkBox12);
-        allBoxes[12] = (CheckBox)findViewById(R.id.checkBox13);
+        allBoxes[0] = (CheckBox)findViewById(R.id.comedyCheck);
+        allBoxes[1] = (CheckBox)findViewById(R.id.charityCheck);
+        allBoxes[2] = (CheckBox)findViewById(R.id.foodCheck);
+        allBoxes[3] = (CheckBox)findViewById(R.id.festivalsCheck);
+        allBoxes[4] = (CheckBox)findViewById(R.id.familyCheck);
+        allBoxes[5] = (CheckBox)findViewById(R.id.lecturesCheck);
+        allBoxes[6] = (CheckBox)findViewById(R.id.musicCheck);
+        allBoxes[7] = (CheckBox)findViewById(R.id.museumCheck);
+        allBoxes[8] = (CheckBox)findViewById(R.id.moviesCheck);
+        allBoxes[9] = (CheckBox)findViewById(R.id.nightCheck);
+        allBoxes[10] = (CheckBox)findViewById(R.id.shoppingCheck);
+        allBoxes[11] = (CheckBox)findViewById(R.id.sportsCheck);
+        allBoxes[12] = (CheckBox)findViewById(R.id.theatreCheck);
 
 
     }

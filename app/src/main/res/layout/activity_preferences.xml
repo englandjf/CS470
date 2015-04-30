@@ -6,21 +6,52 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.ssu.jnn.cs470final.preferences">
 
-    <Button
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign Up"
-        android:id="@+id/signupbutton"
-        android:onClick="ButtonOnClick"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/checkBox2"
-        android:layout_alignEnd="@+id/checkBox2" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/preferences_interests"
+        android:id="@+id/interestText"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Art Museums"
-        android:id="@+id/checkBox"
+        android:text="Comedy"
+        android:id="@+id/comedyCheck"
+        android:checked="false"
+        android:layout_below="@+id/interestText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Charity Events"
+        android:id="@+id/charityCheck"
+        android:layout_below="@+id/comedyCheck"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Food and Drink"
+        android:id="@+id/foodCheck"
+        android:checked="false"
+        android:layout_below="@+id/charityCheck"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Festivals"
+        android:id="@+id/festivalsCheck"
+        android:layout_below="@+id/foodCheck"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:checked="false" />
@@ -29,79 +60,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Family Events"
-        android:id="@+id/checkBox2"
+        android:id="@+id/familyCheck"
         android:checked="false"
-        android:layout_below="@+id/checkBox5"
+        android:layout_below="@+id/festivalsCheck"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Comedy"
-        android:id="@+id/checkBox3"
-        android:checked="false"
-        android:layout_below="@+id/checkBox"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Food and Drink"
-        android:id="@+id/checkBox4"
-        android:checked="false"
-        android:layout_below="@+id/checkBox6"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Festivals"
-        android:id="@+id/checkBox5"
-        android:layout_below="@+id/checkBox4"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:checked="false" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Update Preferences"
-        android:id="@+id/updatePrefs"
-        android:layout_alignBottom="@+id/signupbutton"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="ButtonOnClick"/>
-
-    <SeekBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/seekBar"
-        android:layout_below="@+id/checkBox5"
-        android:layout_marginTop="91dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Charity Events"
-        android:id="@+id/checkBox6"
-        android:layout_below="@+id/checkBox3"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:checked="false" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Lectures and Workshops"
-        android:id="@+id/checkBox7"
-        android:layout_below="@+id/checkBox2"
+        android:id="@+id/lecturesCheck"
+        android:layout_below="@+id/familyCheck"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:checked="false" />
@@ -110,60 +80,110 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Music"
-        android:id="@+id/checkBox8"
+        android:id="@+id/musicCheck"
         android:checked="false"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/checkBox7"
-        android:layout_toEndOf="@+id/checkBox7" />
+        android:layout_below="@+id/lecturesCheck"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Movies"
-        android:id="@+id/checkBox9"
+        android:id="@+id/moviesCheck"
         android:checked="false"
-        android:layout_above="@+id/checkBox6"
-        android:layout_alignLeft="@+id/checkBox8"
-        android:layout_alignStart="@+id/checkBox8" />
+        android:layout_below="@+id/interestText"
+        android:layout_toRightOf="@+id/lecturesCheck"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Museums"
+        android:id="@+id/museumCheck"
+        android:checked="false"
+        android:layout_below="@+id/moviesCheck"
+        android:layout_alignLeft="@+id/moviesCheck"/>
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Night Life"
-        android:id="@+id/checkBox10"
+        android:id="@+id/nightCheck"
         android:checked="false"
-        android:layout_above="@+id/checkBox4"
-        android:layout_alignLeft="@+id/checkBox9"
-        android:layout_alignStart="@+id/checkBox9" />
+        android:layout_below="@+id/museumCheck"
+        android:layout_alignLeft="@+id/moviesCheck" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Shopping"
-        android:id="@+id/checkBox11"
+        android:id="@+id/shoppingCheck"
         android:checked="false"
-        android:layout_below="@+id/checkBox10"
-        android:layout_alignRight="@+id/checkBox10"
-        android:layout_alignEnd="@+id/checkBox10" />
+        android:layout_below="@+id/nightCheck"
+        android:layout_alignLeft="@+id/moviesCheck" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sports "
-        android:id="@+id/checkBox12"
+        android:id="@+id/sportsCheck"
         android:checked="false"
-        android:layout_below="@+id/checkBox11"
-        android:layout_alignLeft="@+id/checkBox11"
-        android:layout_alignStart="@+id/checkBox11" />
+        android:layout_below="@+id/shoppingCheck"
+        android:layout_alignLeft="@+id/moviesCheck" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Theatre"
-        android:id="@+id/checkBox13"
+        android:id="@+id/theatreCheck"
         android:checked="false"
-        android:layout_above="@+id/checkBox7"
-        android:layout_alignLeft="@+id/checkBox12"
-        android:layout_alignStart="@+id/checkBox12" />
+        android:layout_below="@+id/sportsCheck"
+        android:layout_alignLeft="@+id/moviesCheck" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/preferences_radius"
+        android:id="@+id/radiusText"
+        android:layout_below="@+id/musicCheck"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="15dp" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/radiusPref"
+        android:layout_below="@+id/radiusText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:max="100"
+        android:progress="50" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:id="@+id/signupbutton"
+        android:onClick="ButtonOnClick"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update Preferences"
+        android:id="@+id/updatePrefs"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="ButtonOnClick"/>
+
+
+
 
 </RelativeLayout>
