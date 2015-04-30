@@ -171,19 +171,31 @@
         android:onClick="ButtonOnClick"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/interestText"
+        android:layout_alignEnd="@+id/interestText" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Update Preferences"
         android:id="@+id/updatePrefs"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
+        android:onClick="ButtonOnClick"
+        android:layout_below="@+id/radiusPref"
+        android:layout_toRightOf="@+id/musicCheck"
+        android:layout_toEndOf="@+id/musicCheck" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:id="@+id/loginButton"
+        android:layout_alignBottom="@+id/signupbutton"
+        android:layout_alignRight="@+id/radiusPref"
+        android:layout_alignEnd="@+id/radiusPref"
+        android:layout_alignLeft="@+id/theatreCheck"
+        android:layout_alignStart="@+id/theatreCheck"
         android:onClick="ButtonOnClick"/>
-
-
 
 
 </RelativeLayout>

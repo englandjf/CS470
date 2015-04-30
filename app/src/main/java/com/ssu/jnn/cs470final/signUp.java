@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
@@ -26,6 +27,8 @@ public class signUp extends ActionBarActivity {
         user = (EditText)findViewById(R.id.username);
         pass = (EditText)findViewById(R.id.password);
     }
+
+
 
 
     @Override
@@ -57,7 +60,8 @@ public class signUp extends ActionBarActivity {
                 pUser.setPassword(pass.getText().toString());
                 try {
                     pUser.signUp();
-                    Toast.makeText(getApplicationContext(), "Sign Up Successful!", Toast.LENGTH_SHORT).show();
+                    //pUser.logIn(""+user.getText().toString(),""+pass.getText().toString());
+                    Toast.makeText(getApplicationContext(), "Signed Up", Toast.LENGTH_SHORT).show();
                     finish();
                 } catch (ParseException e) {
                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();

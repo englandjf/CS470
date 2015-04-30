@@ -63,6 +63,10 @@
             android:name=".signUp"
             android:label="@string/title_activity_sign_up" >
         </activity>
+        <activity
+            android:name=".loginPage"
+            android:label="@string/title_activity_login_page" >
+        </activity>
     </application>
 
 </manifest>

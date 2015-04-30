@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 
 import com.parse.FindCallback;
@@ -14,6 +15,7 @@ import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.List;
 
@@ -21,6 +23,13 @@ import java.util.List;
 public class preferences extends ActionBarActivity {
 
     CheckBox allBoxes[];
+    boolean loggedIn;
+
+    Button loginOutButton;
+    Button signUpButton;
+    Button prefButton;
+
+    ParseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +52,21 @@ public class preferences extends ActionBarActivity {
         allBoxes[11] = (CheckBox)findViewById(R.id.sportsCheck);
         allBoxes[12] = (CheckBox)findViewById(R.id.theatreCheck);
 
+        //Get Buttons
+        loginOutButton = (Button)findViewById(R.id.loginButton);
+        signUpButton = (Button)findViewById(R.id.signupbutton);
+        prefButton = (Button)findViewById(R.id.updatePrefs);
+
+        //Check if logged in
+        currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null) {
+            loggedIn = true;
+            signUpButton.setClickable(false);
+            loginOutButton.setText("Logout");
+        } else {
+            loggedIn = false;
+            prefButton.setClickable(false);
+        }
 
     }
 
@@ -82,6 +106,20 @@ public class preferences extends ActionBarActivity {
                 for(int i = 0; i < 13; i++) {
                     temp[i] = allBoxes[i].isChecked();
                 }
+                break;
+            case R.id.loginButton:
+                //two cases depending if the person is logged in
+                if(!loggedIn) {
+                    Intent loginIntent = new Intent(new Intent(preferences.this, loginPage.class));
+                    startActivity(loginIntent);
+                }
+                else {
+                    currentUser.logOutInBackground();
+                    //refreshes activity
+                    finish();
+                    startActivity(getIntent());
+                }
+                break;
                 //Puts array in db
                 /*
                 ParseQuery<ParseObject> query = ParseQuery.getQuery("User");
