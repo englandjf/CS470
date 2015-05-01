@@ -10,6 +10,8 @@ import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.Window;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.parse.FindCallback;
@@ -29,6 +31,7 @@ public class infoScreen extends ActionBarActivity{
     TextView tv;
     boolean dataLoaded;
     List comments;
+    double rating;
 
     // I am a comment!
     //test
@@ -126,6 +129,9 @@ public class infoScreen extends ActionBarActivity{
                     dataLoaded = true;
                     ParseObject temp = parseObjects.get(0);
                     comments = temp.getList("comments");
+                    rating  = temp.getDouble("rating");
+                    RatingBar rb = (RatingBar) findViewById(R.id.ratingBar);
+                    rb.setRating((float)rating);
                     //tv.setText("" + comments.get(0));
                     Log.d("Comments", "Size " + comments.size());
                 } else {

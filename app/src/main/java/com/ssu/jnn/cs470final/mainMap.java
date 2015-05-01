@@ -24,8 +24,10 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 import java.util.List;
 
@@ -115,10 +117,24 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
      */
     private void setUpMap() {
         mMap.setOnMarkerClickListener(this);
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("markerInfo");
+        query.findInBackground(new FindCallback<ParseObject>() {
+           public void done(List<ParseObject> parseObjects, com.parse.ParseException e) {
+               if (e == null) {
+                   for (int i =0; i < parseObjects.size(); i++) {
+                       ParseObject pObj = parseObjects.get(i);
+                       double lat = pObj.getParseGeoPoint("coordinates").getLatitude();
+                       double lon = pObj.getParseGeoPoint("coordinates").getLongitude();
+                       String title = pObj.getString("placeName");
+
+                       Marker m = mMap.addMarker(new MarkerOptions().position(new LatLng(lat,lon)).title(title));
+                   }
+               }
+            }
+        });
         // Format for markers.
-        Marker temp1 = mMap.addMarker(new MarkerOptions().position(new LatLng(38.341104, -122.674610)).title("Sonoma State University"));
-        Marker temp2 = mMap.addMarker(new MarkerOptions().position(new LatLng(38.344508, -122.711653)).title("McDonalds"));
-        //centerOnMyLocation();
+        //Marker temp1 = mMap.addMarker(new MarkerOptions().position(new LatLng(38.341104, -122.674610)).title("Sonoma State University"));
+        //Marker temp2 = mMap.addMarker(new MarkerOptions().position(new LatLng(38.344508, -122.711653)).title("McDonalds"));
     }
 
 
