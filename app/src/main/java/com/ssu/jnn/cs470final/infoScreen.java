@@ -32,6 +32,7 @@ public class infoScreen extends ActionBarActivity{
     boolean dataLoaded;
     List comments;
     double rating;
+    String eventDescription;
 
     // I am a comment!
     //test
@@ -127,13 +128,17 @@ public class infoScreen extends ActionBarActivity{
             public void done(List<ParseObject> parseObjects, com.parse.ParseException e) {
                 if (e == null) {
                     dataLoaded = true;
+
                     ParseObject temp = parseObjects.get(0);
                     comments = temp.getList("comments");
                     rating  = temp.getDouble("rating");
+                    eventDescription = temp.getString("Description");
+
                     RatingBar rb = (RatingBar) findViewById(R.id.ratingBar);
                     rb.setRating((float)rating);
-                    //tv.setText("" + comments.get(0));
-                    Log.d("Comments", "Size " + comments.size());
+                    TextView descTextView = (TextView) findViewById(R.id.eventDescriptionText);
+                    descTextView.setText(eventDescription);
+
                 } else {
                     Log.d("score", "Error: " + e.getMessage());
                 }
@@ -141,11 +146,6 @@ public class infoScreen extends ActionBarActivity{
 
         });
     }
-
-
-
-
-
 
     GestureDetector gestureDetector
             = new GestureDetector(simpleOnGestureListener);
