@@ -9,6 +9,42 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/markerName"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:hint="Marker Name" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Category:"
+        android:id="@+id/categoryLabel"
+        android:layout_below="@+id/markerName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingLeft="4dp" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/categories"
+        android:layout_below="@+id/markerName"
+        android:spinnerMode="dialog"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/categoryLabel"
+        android:layout_toEndOf="@+id/categoryLabel"
+        android:layout_alignBottom="@+id/categoryLabel"
+        android:paddingTop="2dp" />
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/address"
         android:hint="Address"
         android:layout_below="@+id/categories"
@@ -17,27 +53,9 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/pinName"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:hint="Pin Name" />
 
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/categories"
-        android:layout_below="@+id/pinName"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:spinnerMode="dropdown"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true" />
+
+
 
     <EditText
         android:layout_width="wrap_content"
@@ -45,13 +63,12 @@
         android:inputType="textMultiLine"
         android:ems="10"
         android:id="@+id/description"
-        android:layout_below="@+id/address"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="106dp"
+        android:hint="Description"
+        android:layout_below="@+id/timeLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:hint="description" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -61,5 +78,56 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:onClick="ButtonOnClick"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Date:"
+        android:id="@+id/dateLabel"
+        android:layout_below="@+id/address"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingLeft="4dp"
+        android:layout_toStartOf="@+id/categories" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Select Date..."
+        android:id="@+id/dateText"
+        android:layout_below="@+id/address"
+        android:layout_toRightOf="@+id/dateLabel"
+        android:clickable="true"
+        android:layout_alignRight="@+id/address"
+        android:layout_alignEnd="@+id/address"
+        android:onClick="OnDateSelect"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Time:"
+        android:id="@+id/timeLabel"
+        android:layout_below="@+id/dateLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/dateText"
+        android:layout_toStartOf="@+id/dateText"
+        android:paddingLeft="4dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Select Time..."
+        android:id="@+id/timeText"
+        android:layout_below="@+id/dateLabel"
+        android:layout_toRightOf="@+id/dateLabel"
+        android:layout_alignRight="@+id/dateText"
+        android:layout_alignEnd="@+id/dateText"
+        android:onClick="OnTimeSelect"/>
+
 
 </RelativeLayout>
