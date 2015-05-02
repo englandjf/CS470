@@ -1,16 +1,28 @@
 package com.ssu.jnn.cs470final;
 
+import android.location.Address;
+import android.location.Geocoder;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.google.android.gms.maps.model.LatLng;
+import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseGeoPoint;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 
 public class addMarker extends ActionBarActivity {
@@ -40,6 +52,8 @@ public class addMarker extends ActionBarActivity {
 
         categoriesArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(categoriesArrayAdapter);
+
+
     }
 
 
@@ -66,7 +80,34 @@ public class addMarker extends ActionBarActivity {
     }
 
     public void ButtonOnClick(View v){
-        //only one button
-        //do this
+        EditText placeNameField = (EditText)findViewById(R.id.pinName);
+        Spinner categoryField = (Spinner)findViewById(R.id.categories);
+        EditText addressField = (EditText)findViewById(R.id.address);
+        EditText descriptionField = (EditText)findViewById(R.id.description);
+
+        double latitude = 0;
+        double longitude = 0;
+
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+        List<Address> addresses = null;
+
+        try {
+            addresses = geocoder.getFromLocationName(addressField.getText().toString(), 1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Address a = addresses.get(0);
+        Log.wtf("address", a.toString());
+        if(addresses.size() > 0) {
+            latitude = a.getLatitude();
+            longitude = a.getLongitude();
+        }
+
+        ParseObject newMarker = new ParseObject("markerInfo");
+        newMarker.put("placeName", placeNameField.getText().toString());
+        newMarker.put("category", categoryField.getSelectedItem().toString());
+        newMarker.put("Description", descriptionField.getText().toString());
+        newMarker.put("coordinates", new ParseGeoPoint(latitude,longitude));
+        newMarker.saveInBackground();
     }
 }
