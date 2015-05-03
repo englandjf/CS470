@@ -26,11 +26,14 @@ import com.parse.ParseObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 
 public class addMarker extends ActionBarActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
+
+    int sYr, sMo, sDy, sHr, sMn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,12 +118,28 @@ public class addMarker extends ActionBarActivity implements DatePickerDialog.OnD
 
     public void onDateSet(DatePicker view, int year, int month, int day) {
         TextView dateText = (TextView)findViewById(R.id.dateText);
-        dateText.setText(month + "/" + day + "/" + year);
+        dateText.setText(month+1 + "/" + day + "/" + year);
+        sYr = year;
+        sMo = month+1;
+        sDy = day;
     }
 
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        TextView timeText = (TextView)findViewById(R.id.timeText);
-        timeText.setText(hourOfDay + ":" + minute);
+        TextView timeText = (TextView) findViewById(R.id.timeText);
+        sHr = hourOfDay;
+        sMn = minute;
+        if (hourOfDay > 12) {
+            timeText.setText(String.format("%02d:%02d PM", hourOfDay - 12, minute));
+        }
+        else if (hourOfDay == 0) {
+            timeText.setText(String.format("%02d:%02d AM", 12, minute));
+        }
+        else if (hourOfDay == 12) {
+            timeText.setText(String.format("%02d:%02d PM", 12, minute));
+        }
+        else {
+            timeText.setText(String.format("%02d:%02d AM", hourOfDay, minute));
+        }
     }
 
     public void OnDateSelect(View v){
@@ -156,11 +175,16 @@ public class addMarker extends ActionBarActivity implements DatePickerDialog.OnD
             longitude = a.getLongitude();
         }
 
+        Date startDateTime = new Date(sYr-1900, sMo-1, sDy-1, sHr+3, sMn);
+
         ParseObject newMarker = new ParseObject("markerInfo");
         newMarker.put("placeName", placeNameField.getText().toString());
         newMarker.put("category", categoryField.getSelectedItem().toString());
         newMarker.put("Description", descriptionField.getText().toString());
         newMarker.put("coordinates", new ParseGeoPoint(latitude,longitude));
+        newMarker.put("rating", 3);
+        newMarker.put("startDate", startDateTime);
         newMarker.saveInBackground();
+        finish();
     }
 }
