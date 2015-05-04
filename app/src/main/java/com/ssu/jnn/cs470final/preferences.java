@@ -1,6 +1,8 @@
 package com.ssu.jnn.cs470final;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +18,9 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.List;
 
@@ -93,18 +98,26 @@ public class preferences extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @TargetApi(Build.VERSION_CODES.KITKAT)
     public void ButtonOnClick(View v) {
         switch (v.getId()) {
             case R.id.signupbutton:
-                Log.i("Clicked", "1");
                 Intent signupIntent = new Intent(new Intent(preferences.this, signUp.class));
                 startActivity(signupIntent);
                 break;
             case R.id.updatePrefs:
-                Log.i("Update","Prefs");
-                final boolean temp[] = new boolean[13];
+                boolean temp[] = new boolean[13];
                 for(int i = 0; i < 13; i++) {
                     temp[i] = allBoxes[i].isChecked();
+                }
+                final JSONArray values;
+                try {
+                    values = new JSONArray(temp);
+                    currentUser.put("currentInterests",values);
+                    currentUser.saveInBackground();
+                }
+                catch (JSONException e) {
+                    e.printStackTrace();
                 }
                 break;
             case R.id.loginButton:
@@ -120,24 +133,6 @@ public class preferences extends ActionBarActivity {
                     startActivity(getIntent());
                 }
                 break;
-                //Puts array in db
-                /*
-                ParseQuery<ParseObject> query = ParseQuery.getQuery("User");
-                query.whereEqualTo("username","I am nick");
-                query.findInBackground(new FindCallback<ParseObject>() {
-                    public void done(List<ParseObject> userList, ParseException e) {
-                        if (e == null) {
-                            userList.get(0).put("currentInterests",temp);
-                            userList.get(0).saveInBackground();
-
-                        } else {
-                            Log.d("score", "Error: " + e.getMessage());
-                        }
-                    }
-                });
-                */
-
-                //break;
         }
     }
 

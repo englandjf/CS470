@@ -8,6 +8,7 @@ import android.location.GpsStatus;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Network;
 import android.provider.SyncStateContract;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -61,19 +62,35 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
         String bestProvider = mLocationManager.getBestProvider(criteria, true);
 
         setUpMapIfNeeded();
-        Log.d("Location Provider", bestProvider);
-        Location location = mLocationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
+        // Try to get GPS Location
+        Location location = mLocationManager.getLastKnownLocation(bestProvider);
         if (location != null) {
+            // We got one; Use it.
+            Log.d("Location Provider", bestProvider);
             Log.d("Location-Lat", "" + location.getLatitude());
             Log.d("Location-Long", "" + location.getLongitude());
 
             LatLng temp = new LatLng(location.getLatitude(),location.getLongitude());
-            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(temp,15.0f));
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(temp, 15.0f));
         }
         else {
-            Log.d("Location", "Location was null");
-        }
+            // No Location received, try using Network.
+            Log.d("Location", "GPS Location was null");
+            location = mLocationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            if (location != null) {
+                Log.d("Location Provider", LocationManager.NETWORK_PROVIDER);
+                Log.d("Location-Lat", "" + location.getLatitude());
+                Log.d("Location-Long", "" + location.getLongitude());
 
+                LatLng temp = new LatLng(location.getLatitude(), location.getLongitude());
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(temp, 15.0f));
+            }
+            else {
+                // That didn't work either; give up.
+                Log.d("Location", "Network Location was null");
+            }
+        }
     }
 
 

@@ -67,6 +67,10 @@
             android:name=".loginPage"
             android:label="@string/title_activity_login_page" >
         </activity>
+        <activity
+            android:name=".addComment"
+            android:label="@string/title_activity_add_comment" >
+        </activity>
     </application>
 
 </manifest>

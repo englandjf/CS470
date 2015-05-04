@@ -10,6 +10,7 @@ import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.Window;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -145,6 +146,11 @@ public class infoScreen extends ActionBarActivity{
             }
 
         });
+    }
+
+    public void ButtonOnClick (View v) {
+        Intent intent = new Intent(new Intent(infoScreen.this,addComment.class));
+        startActivity(intent);
     }
 
     GestureDetector gestureDetector

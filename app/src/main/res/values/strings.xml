@@ -17,5 +17,6 @@
     <string name="title_activity_login_page">loginPage</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_add_comment">addComment</string>
 
 </resources>
