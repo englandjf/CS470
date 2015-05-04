@@ -50,28 +50,28 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_map);
 
-
-
         mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
-//        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000,
-//                .1f, mLocationListener);
-
-        // Need to get best provider.
-
-
+        Criteria criteria = new Criteria();
+        criteria.setPowerRequirement(Criteria.POWER_HIGH);
+        criteria.setAccuracy(Criteria.ACCURACY_FINE);
+        criteria.setBearingAccuracy(Criteria.ACCURACY_FINE);
+        criteria.setSpeedAccuracy(Criteria.ACCURACY_LOW);
+        criteria.setAltitudeRequired(false);
+        String bestProvider = mLocationManager.getBestProvider(criteria, true);
 
         setUpMapIfNeeded();
-
+        Log.d("Location Provider", bestProvider);
         Location location = mLocationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
         if (location != null) {
-            Log.d("Location", "" + location.getLatitude());
+            Log.d("Location-Lat", "" + location.getLatitude());
+            Log.d("Location-Long", "" + location.getLongitude());
 
             LatLng temp = new LatLng(location.getLatitude(),location.getLongitude());
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(temp,15.0f));
         }
         else {
-            Log.d("LocInfo", "Location was null");
+            Log.d("Location", "Location was null");
         }
 
     }
@@ -129,11 +129,12 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
                        double lat = pObj.getParseGeoPoint("coordinates").getLatitude();
                        double lon = pObj.getParseGeoPoint("coordinates").getLongitude();
                        String title = pObj.getString("placeName");
+                       double rating = pObj.getDouble("rating");
 
                        Marker m = mMap.addMarker(new MarkerOptions().position(new LatLng(lat,lon)).title(title));
                        Circle c = mMap.addCircle(new CircleOptions()
                                .center(new LatLng(lat,lon))
-                               .radius(1000)
+                               .radius(500 + rating * 100)
                                .strokeWidth(1)
                                .strokeColor(Color.RED));
 
