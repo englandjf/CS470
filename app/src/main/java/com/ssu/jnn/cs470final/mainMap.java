@@ -2,6 +2,7 @@ package com.ssu.jnn.cs470final;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.Criteria;
 import android.location.GpsStatus;
 import android.location.Location;
@@ -21,6 +22,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -128,6 +131,12 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
                        String title = pObj.getString("placeName");
 
                        Marker m = mMap.addMarker(new MarkerOptions().position(new LatLng(lat,lon)).title(title));
+                       Circle c = mMap.addCircle(new CircleOptions()
+                               .center(new LatLng(lat,lon))
+                               .radius(1000)
+                               .strokeWidth(1)
+                               .strokeColor(Color.RED));
+
                    }
                }
             }
