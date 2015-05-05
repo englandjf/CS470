@@ -138,7 +138,8 @@
         android:id="@+id/theatreCheck"
         android:checked="false"
         android:layout_below="@+id/sportsCheck"
-        android:layout_alignLeft="@+id/moviesCheck" />
+        android:layout_alignLeft="@+id/sportsCheck"
+        android:layout_alignStart="@+id/sportsCheck" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -149,7 +150,7 @@
         android:layout_below="@+id/musicCheck"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="10dp" />
 
     <SeekBar
         android:layout_width="wrap_content"
@@ -160,8 +161,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:max="1000"
-        android:progress="500"
+        android:max="50"
+        android:progress="25"
         android:indeterminate="false" />
 
     <Button
@@ -182,7 +183,7 @@
         android:text="Update Preferences"
         android:id="@+id/updatePrefs"
         android:onClick="ButtonOnClick"
-        android:layout_below="@+id/radiusPref"
+        android:layout_above="@+id/signupbutton"
         android:layout_toRightOf="@+id/musicCheck"
         android:layout_toEndOf="@+id/musicCheck" />
 
@@ -194,9 +195,9 @@
         android:layout_alignBottom="@+id/signupbutton"
         android:layout_alignRight="@+id/radiusPref"
         android:layout_alignEnd="@+id/radiusPref"
-        android:layout_alignLeft="@+id/theatreCheck"
-        android:layout_alignStart="@+id/theatreCheck"
-        android:onClick="ButtonOnClick"/>
+        android:onClick="ButtonOnClick"
+        android:layout_toRightOf="@+id/lecturesCheck"
+        android:layout_toEndOf="@+id/lecturesCheck" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -210,6 +211,28 @@
         android:layout_toEndOf="@+id/interestText"
         android:layout_alignLeft="@+id/updatePrefs"
         android:layout_alignStart="@+id/updatePrefs" />
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/minimumRatingBar"
+        android:layout_above="@+id/updatePrefs"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/radiusPref"
+        android:layout_marginTop="20dp"
+        android:numStars="5"
+        android:stepSize=".1"
+        android:rating="3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Minimum Rating:"
+        android:id="@+id/minimumRatingText"
+        android:layout_below="@+id/radiusPref"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>

@@ -36,7 +36,8 @@
         android:progressTint="#ffffda1f"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:stepSize=".1" />
+        android:stepSize=".1"
+        android:rating="3" />
 
     <TextView
         android:layout_width="wrap_content"

@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.RatingBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -37,6 +38,7 @@ public class preferences extends ActionBarActivity {
     Button prefButton;
     SeekBar defaultRadiusBar;
     TextView userText;
+    RatingBar minRatingBar;
 
     ParseUser currentUser;
 
@@ -67,6 +69,8 @@ public class preferences extends ActionBarActivity {
         prefButton = (Button)findViewById(R.id.updatePrefs);
         defaultRadiusBar = (SeekBar)findViewById(R.id.radiusPref);
         userText = (TextView)findViewById(R.id.userText);
+        minRatingBar = (RatingBar)findViewById(R.id.minimumRatingBar);
+
 
 
         //Check if logged in
@@ -82,6 +86,7 @@ public class preferences extends ActionBarActivity {
                 allBoxes[i].setChecked((boolean)interests.get(i));
             }
             defaultRadiusBar.setProgress(currentUser.getInt("defaultRadius"));
+            minRatingBar.setRating((float)currentUser.getDouble("minimumRating"));
             userText.setText("User: " + currentUser.getUsername());
 
         } else {
@@ -133,6 +138,7 @@ public class preferences extends ActionBarActivity {
                     values = new JSONArray(temp);
                     currentUser.put("defaultRadius", defaultRadiusBar.getProgress());
                     currentUser.put("currentInterests",values);
+                    currentUser.put("minimumRating", minRatingBar.getRating());
                     currentUser.saveInBackground();
                     //currentUser.save();
                     finish();

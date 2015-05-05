@@ -74,8 +74,9 @@ public class signUp extends ActionBarActivity {
                     final JSONArray values;
                     try {
                         values = new JSONArray(temp);
-                        pUser.put("defaultRadius", 500);
+                        pUser.put("defaultRadius", 25);
                         pUser.put("currentInterests",values);
+                        pUser.put("minimumRating", 3);
                         pUser.saveInBackground();
                     }
                     catch (JSONException e) {

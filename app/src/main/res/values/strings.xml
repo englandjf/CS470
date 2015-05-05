@@ -13,7 +13,7 @@
     <string name="title_activity_sign_up">Sign Up</string>
 
     <string name="preferences_interests">Your Interests:</string>
-    <string name="preferences_radius">Default Event Notification Radius:</string>
+    <string name="preferences_radius">Event Radius:</string>
     <string name="title_activity_login_page">loginPage</string>
 
     <string name="hello_world">Hello world!</string>
