@@ -1,6 +1,8 @@
 package com.ssu.jnn.cs470final;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +16,9 @@ import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 public class signUp extends ActionBarActivity {
 
@@ -52,6 +57,7 @@ public class signUp extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    @TargetApi(Build.VERSION_CODES.KITKAT)
     public void ButtonOnClick(View v) throws ParseException {
         switch (v.getId()) {
             case R.id.doSignUpButton:
@@ -60,7 +66,21 @@ public class signUp extends ActionBarActivity {
                 pUser.setPassword(pass.getText().toString());
                 try {
                     pUser.signUp();
-                    //pUser.logIn(""+user.getText().toString(),""+pass.getText().toString());
+                    //pUser.logIn("" + user.getText().toString(), "" + pass.getText().toString());
+                    boolean temp[] = new boolean[13];
+                    for(int i = 0; i < 13; i++) {
+                        temp[i] = true;
+                    }
+                    final JSONArray values;
+                    try {
+                        values = new JSONArray(temp);
+                        pUser.put("defaultRadius", 500);
+                        pUser.put("currentInterests",values);
+                        pUser.saveInBackground();
+                    }
+                    catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                     Toast.makeText(getApplicationContext(), "Signed Up", Toast.LENGTH_SHORT).show();
                     finish();
                 } catch (ParseException e) {

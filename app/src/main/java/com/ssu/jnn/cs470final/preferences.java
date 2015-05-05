@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.SeekBar;
 
 import com.parse.FindCallback;
 import com.parse.Parse;
@@ -33,6 +34,7 @@ public class preferences extends ActionBarActivity {
     Button loginOutButton;
     Button signUpButton;
     Button prefButton;
+    SeekBar defaultRadiusBar;
 
     ParseUser currentUser;
 
@@ -61,6 +63,7 @@ public class preferences extends ActionBarActivity {
         loginOutButton = (Button)findViewById(R.id.loginButton);
         signUpButton = (Button)findViewById(R.id.signupbutton);
         prefButton = (Button)findViewById(R.id.updatePrefs);
+        defaultRadiusBar = (SeekBar)findViewById(R.id.radiusPref);
 
         //Check if logged in
         currentUser = ParseUser.getCurrentUser();
@@ -68,6 +71,14 @@ public class preferences extends ActionBarActivity {
             loggedIn = true;
             signUpButton.setClickable(false);
             loginOutButton.setText("Logout");
+
+            //currentUser = ParseUser.getCurrentUser();
+            List interests = currentUser.getList("currentInterests");
+            for (int i = 0; i < interests.size(); i++) {
+                allBoxes[i].setChecked((boolean)interests.get(i));
+            }
+            defaultRadiusBar.setProgress(currentUser.getInt("defaultRadius"));
+
         } else {
             loggedIn = false;
             prefButton.setClickable(false);
@@ -104,8 +115,10 @@ public class preferences extends ActionBarActivity {
             case R.id.signupbutton:
                 Intent signupIntent = new Intent(new Intent(preferences.this, signUp.class));
                 startActivity(signupIntent);
+                finish();
                 break;
             case R.id.updatePrefs:
+
                 boolean temp[] = new boolean[13];
                 for(int i = 0; i < 13; i++) {
                     temp[i] = allBoxes[i].isChecked();
@@ -113,8 +126,10 @@ public class preferences extends ActionBarActivity {
                 final JSONArray values;
                 try {
                     values = new JSONArray(temp);
+                    currentUser.put("defaultRadius", defaultRadiusBar.getProgress());
                     currentUser.put("currentInterests",values);
                     currentUser.saveInBackground();
+                    finish();
                 }
                 catch (JSONException e) {
                     e.printStackTrace();
@@ -125,6 +140,7 @@ public class preferences extends ActionBarActivity {
                 if(!loggedIn) {
                     Intent loginIntent = new Intent(new Intent(preferences.this, loginPage.class));
                     startActivity(loginIntent);
+                    finish();
                 }
                 else {
                     currentUser.logOutInBackground();
