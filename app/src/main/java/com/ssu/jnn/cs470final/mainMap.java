@@ -365,7 +365,7 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
 
         ParseGeoPoint parseLocation = new ParseGeoPoint(location.getLatitude(),location.getLongitude());
         ParseQuery<ParseObject> query = ParseQuery.getQuery("markerInfo");
-        query.whereWithinMiles("coordinates",parseLocation,1);
+        query.whereWithinMiles("coordinates",parseLocation,10);
         try {
             final List tempList = query.find();
             Handler mainHandler = new Handler(getMainLooper());

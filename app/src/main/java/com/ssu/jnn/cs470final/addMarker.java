@@ -183,7 +183,7 @@ public class addMarker extends ActionBarActivity implements DatePickerDialog.OnD
         newMarker.put("Description", descriptionField.getText().toString());
         newMarker.put("coordinates", new ParseGeoPoint(latitude,longitude));
         newMarker.put("rating", 3);
-        newMarker.put("startDate", startDateTime);
+        //newMarker.put("startDate", startDateTime);
         newMarker.saveInBackground();
         finish();
     }
