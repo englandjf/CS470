@@ -91,7 +91,7 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
         };
         myTimer.schedule(TT,0,5000);
         */
-
+        mMap.setMyLocationEnabled(true);
 
 
         // Try to get GPS Location
@@ -331,7 +331,7 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
             mainHandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(temp, 15.0f));
+                    //mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(temp, 15.0f));
                 }
             });
             //mMap.moveCamera(CameraUpdateFactory.newLatLng(temp));
@@ -351,7 +351,7 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
                 mainHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(temp, 15.0f));
+                       // mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(temp, 15.0f));
                     }
                 });
                 //mMap.moveCamera(CameraUpdateFactory.newLatLng(temp));
