@@ -133,72 +133,14 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
             }
         };
         myTimer.schedule(TT,0,60000);
-        //myTimer.schedule(TT,0,5000);
-
-
-            /*
-        test = (new Geofence.Builder()
-                .setRequestId("first")
-                .setCircularRegion(14.3145601,121.1136661,1000)
-                .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_ENTER)
-                .build());
-
-        mGeofencePendingIntent = getGeofencePendingIntent();
-
-        */
-
-        /*
-        ParseGeoPoint parseLocation = new ParseGeoPoint(location.getLatitude(),location.getLongitude());
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("markerInfo");
-        query.whereWithinMiles("coordinates",parseLocation,1);
-        try {
-            List tempList = query.find();
-            for(int i = 0; i < tempList.size();i++){
-                ParseObject tempty = (ParseObject)tempList.get(i);
-                Log.i("tempList",""+tempty.getString("placeName"));
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        */
-
-
-
-        //LocationServices.GeofencingApi.addGeofences(mGoogleApiClient,getGeofencingRequest(),getGeofencePendingIntent()).setResultCallback((com.google.android.gms.common.api.ResultCallback<com.google.android.gms.common.api.Status>) this);
-
-
 
     }
-
-    /*
-    private GeofencingRequest getGeofencingRequest(){
-        GeofencingRequest.Builder builder = new GeofencingRequest.Builder();
-        builder.setInitialTrigger(GeofencingRequest.INITIAL_TRIGGER_ENTER);
-        builder.addGeofence(test);
-        return builder.build();
-    }
-
-    private PendingIntent getGeofencePendingIntent() {
-        if(mGeofencePendingIntent != null)
-            return mGeofencePendingIntent;
-
-        Log.i("Pending Intent","meh");
-
-        return  PendingIntent.getService(this,0,new Intent(),PendingIntent.FLAG_UPDATE_CURRENT);
-    }
-    */
-
-
-
 
     @Override
     protected void onResume() {
         super.onResume();
         setUpMapIfNeeded();
     }
-
-
-
 
     /**
      * Sets up the map if it is possible to do so (i.e., the Google Play services APK is correctly
@@ -236,44 +178,6 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
      */
     private void setUpMap() {
         mMap.setOnMarkerClickListener(this);
-
-        /*
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("markerInfo");
-        query.findInBackground(new FindCallback<ParseObject>() {
-           public void done(List<ParseObject> parseObjects, com.parse.ParseException e) {
-               int circleRadius;
-               if (currentUser == null) {
-                   circleRadius = 500;
-               }
-               else {
-                   circleRadius = currentUser.getInt("defaultRadius");
-               }
-               if (e == null) {
-                   for (int i =0; i < parseObjects.size(); i++) {
-                       ParseObject pObj = parseObjects.get(i);
-                       double lat = pObj.getParseGeoPoint("coordinates").getLatitude();
-                       double lon = pObj.getParseGeoPoint("coordinates").getLongitude();
-                       String title = pObj.getString("placeName");
-                       double rating = pObj.getDouble("rating");
-
-                       Marker m = mMap.addMarker(new MarkerOptions().position(new LatLng(lat,lon)).title(title));
-
-                       Circle c = mMap.addCircle(new CircleOptions()
-                               .center(new LatLng(lat,lon))
-                               .radius(circleRadius + rating * 100)
-                               .strokeWidth(1)
-                               .strokeColor(Color.RED));
-
-
-                   }
-               }
-            }
-        });
-                    */
-        // Format for markers.
-        //Marker temp1 = mMap.addMarker(new MarkerOptions().position(new LatLng(38.341104, -122.674610)).title("Sonoma State University"));
-        //Marker temp2 = mMap.addMarker(new MarkerOptions().position(new LatLng(38.344508, -122.711653)).title("McDonalds"));
-
     }
 
 
@@ -402,7 +306,7 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
 
         ParseGeoPoint parseLocation = new ParseGeoPoint(location.getLatitude(),location.getLongitude());
         final int userRadius = currentUser.getInt("defaultRadius");
-        float userMinRating = (float)currentUser.getDouble("minimumRating");
+        final float userMinRating = (float)currentUser.getDouble("minimumRating");
         ParseQuery<ParseObject> query = ParseQuery.getQuery("markerInfo");
         query.whereWithinMiles("coordinates",parseLocation,userRadius);
         try {
@@ -413,71 +317,29 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
                 public void run()
                 {
                     mMap.clear();
-                    for(int i = 0; i < tempList.size();i++){
-                        //ParseObject tempty = (ParseObject)tempList.get(i);
-                        
+                    for(int i = 0; i < tempList.size();i++) {
                         ParseObject pObj = (ParseObject) tempList.get(i);
                         double lat = pObj.getParseGeoPoint("coordinates").getLatitude();
                         double lon = pObj.getParseGeoPoint("coordinates").getLongitude();
                         String title = pObj.getString("placeName");
                         double rating = pObj.getDouble("rating");
-                        Marker m = mMap.addMarker(new MarkerOptions().position(new LatLng(lat,lon)).title(title));
+                        if (rating >= userMinRating) {
+                            mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lon)).title(title));
+                        }
+
+                        Circle c = mMap.addCircle(new CircleOptions()
+                                .center(new LatLng(location.getLatitude(), location.getLongitude()))
+                                .radius(userRadius * 1609.34)
+                                .strokeWidth(1)
+                                .strokeColor(Color.BLUE));
                     }
-
-                    Circle c = mMap.addCircle(new CircleOptions()
-                            .center(new LatLng(location.getLatitude(),location.getLongitude()))
-                            .radius(userRadius *1609.34)
-                            .strokeWidth(1)
-                            .strokeColor(Color.BLUE));
-
-
                 }
-
-                //Log.i("tempList",""+tempty.getString("placeName"));
             });
-        } catch (ParseException e) {
+        }
+        catch (ParseException e) {
             e.printStackTrace();
         }
     }
-
-    //ADDED
-    /*
-    @Override
-    public void onConnected(Bundle bundle) {
-
-    }
-
-
-    @Override
-    public void onConnectionSuspended(int i) {
-
-    }
-
-    @Override
-    public void onLocationChanged(Location location) {
-
-    }
-
-    @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-
-    }
-
-    @Override
-    public void onProviderEnabled(String provider) {
-
-    }
-
-    @Override
-    public void onProviderDisabled(String provider) {
-
-    }
-
-    @Override
-    public void onConnectionFailed(ConnectionResult connectionResult) {
-
-    }
-    */
 }
 
 

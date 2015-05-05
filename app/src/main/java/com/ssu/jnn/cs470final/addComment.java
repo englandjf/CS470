@@ -93,19 +93,23 @@ public class addComment extends ActionBarActivity {
                         allRatings.add(allRatings.size(),theRating.getRating());
                         parseObject.put("commentRating",allRatings);
                         int numRatings = allRatings.size();
-                        float ratingSum = 0;
+                        float ratingSum = 0.0f;
+                        float theRating;
                         for (int i = 0; i < numRatings; i++) {
-                            ratingSum = ratingSum + (float)allRatings.get(i);
+                            theRating = (float)allRatings.get(i);
+                            ratingSum = ratingSum + theRating;
+                            //ratingSum = ratingSum + (double)allRatings.get(i);
                         }
-                        double newEventRating = (double)ratingSum/(double)numRatings;
+                        float newEventRating = ratingSum/numRatings;
                         parseObject.put("rating", newEventRating);
                     }
                     else {
-                        float allRatings2[] = new float[1];
+                        double allRatings2[] = new double[1];
                         allRatings2[0] = theRating.getRating();
                         try {
                             JSONArray allRatings3 = new JSONArray(allRatings2);
                             parseObject.put("commentRating",allRatings3);
+                            parseObject.put("rating", allRatings2[0] + 3 / 2);
                         }
                         catch (JSONException e1) {
                             e1.printStackTrace();
