@@ -32,6 +32,7 @@ import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.List;
 
@@ -43,6 +44,8 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
 
     LocationManager mLocationManager;
 
+    ParseUser currentUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Parse.enableLocalDatastore(this);
@@ -50,6 +53,8 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_map);
+
+        currentUser = ParseUser.getCurrentUser();
 
         mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
@@ -137,9 +142,17 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
      */
     private void setUpMap() {
         mMap.setOnMarkerClickListener(this);
+
         ParseQuery<ParseObject> query = ParseQuery.getQuery("markerInfo");
         query.findInBackground(new FindCallback<ParseObject>() {
            public void done(List<ParseObject> parseObjects, com.parse.ParseException e) {
+               int circleRadius;
+               if (currentUser == null) {
+                   circleRadius = 500;
+               }
+               else {
+                   circleRadius = currentUser.getInt("defaultRadius");
+               }
                if (e == null) {
                    for (int i =0; i < parseObjects.size(); i++) {
                        ParseObject pObj = parseObjects.get(i);
@@ -151,7 +164,7 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
                        Marker m = mMap.addMarker(new MarkerOptions().position(new LatLng(lat,lon)).title(title));
                        Circle c = mMap.addCircle(new CircleOptions()
                                .center(new LatLng(lat,lon))
-                               .radius(500 + rating * 100)
+                               .radius(circleRadius + rating * 100)
                                .strokeWidth(1)
                                .strokeColor(Color.RED));
 
@@ -181,8 +194,11 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
         switch (v.getId()) {
             case R.id.settingsButton:
                 Log.i("Clicked", "1");
+
                 Intent prefIntent = new Intent(new Intent(mainMap.this, preferences.class));
                 startActivity(prefIntent);
+                mMap.clear();
+                setUpMap();
                 break;
             case R.id.addButton:
                 Log.i("Clicked", "2");

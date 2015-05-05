@@ -173,8 +173,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/interestText"
-        android:layout_alignEnd="@+id/interestText" />
+        android:layout_alignRight="@+id/foodCheck"
+        android:layout_alignEnd="@+id/foodCheck" />
 
     <Button
         android:layout_width="wrap_content"
@@ -197,6 +197,19 @@
         android:layout_alignLeft="@+id/theatreCheck"
         android:layout_alignStart="@+id/theatreCheck"
         android:onClick="ButtonOnClick"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/userText"
+        android:layout_above="@+id/signupbutton"
+        android:layout_below="@+id/updatePrefs"
+        android:layout_alignRight="@+id/updatePrefs"
+        android:layout_alignEnd="@+id/updatePrefs"
+        android:layout_toEndOf="@+id/interestText"
+        android:layout_alignLeft="@+id/updatePrefs"
+        android:layout_alignStart="@+id/updatePrefs" />
 
 
 </RelativeLayout>

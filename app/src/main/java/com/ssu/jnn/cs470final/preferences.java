@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 import com.parse.FindCallback;
 import com.parse.Parse;
@@ -35,6 +36,7 @@ public class preferences extends ActionBarActivity {
     Button signUpButton;
     Button prefButton;
     SeekBar defaultRadiusBar;
+    TextView userText;
 
     ParseUser currentUser;
 
@@ -64,6 +66,8 @@ public class preferences extends ActionBarActivity {
         signUpButton = (Button)findViewById(R.id.signupbutton);
         prefButton = (Button)findViewById(R.id.updatePrefs);
         defaultRadiusBar = (SeekBar)findViewById(R.id.radiusPref);
+        userText = (TextView)findViewById(R.id.userText);
+
 
         //Check if logged in
         currentUser = ParseUser.getCurrentUser();
@@ -78,6 +82,7 @@ public class preferences extends ActionBarActivity {
                 allBoxes[i].setChecked((boolean)interests.get(i));
             }
             defaultRadiusBar.setProgress(currentUser.getInt("defaultRadius"));
+            userText.setText("User: " + currentUser.getUsername());
 
         } else {
             loggedIn = false;
@@ -129,6 +134,7 @@ public class preferences extends ActionBarActivity {
                     currentUser.put("defaultRadius", defaultRadiusBar.getProgress());
                     currentUser.put("currentInterests",values);
                     currentUser.saveInBackground();
+                    //currentUser.save();
                     finish();
                 }
                 catch (JSONException e) {
