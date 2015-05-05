@@ -132,7 +132,8 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
                 locationAssistant();
             }
         };
-        myTimer.schedule(TT,0,5000);
+        myTimer.schedule(TT,0,60000);
+        //myTimer.schedule(TT,0,5000);
 
 
             /*
@@ -294,15 +295,51 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
                 Log.i("Clicked", "1");
 
                 Intent prefIntent = new Intent(new Intent(mainMap.this, preferences.class));
-                startActivity(prefIntent);
-                mMap.clear();
-                setUpMap();
+                startActivityForResult(prefIntent, 1);
                 break;
             case R.id.addButton:
                 Log.i("Clicked", "2");
                 Intent addMarkerIntent = new Intent(new Intent(mainMap.this, addMarker.class));
-                startActivity(addMarkerIntent);
+                startActivityForResult(addMarkerIntent, 1);
                 break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.wtf("In OnActivityResult", "a");
+        redrawMap();
+    }
+
+    void redrawMap () {
+        Log.wtf("redrawing", "a");
+        ParseGeoPoint parseLocation = new ParseGeoPoint(location.getLatitude(),location.getLongitude());
+        final int userRadius = currentUser.getInt("defaultRadius");
+        float userMinRating = (float)currentUser.getDouble("minimumRating");
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("markerInfo");
+        query.whereWithinMiles("coordinates",parseLocation,userRadius);
+        try {
+            final List tempList = query.find();
+            mMap.clear();
+            for(int i = 0; i < tempList.size();i++){
+                ParseObject pObj = (ParseObject) tempList.get(i);
+                double lat = pObj.getParseGeoPoint("coordinates").getLatitude();
+                double lon = pObj.getParseGeoPoint("coordinates").getLongitude();
+                String title = pObj.getString("placeName");
+                double rating = pObj.getDouble("rating");
+                mMap.addMarker(new MarkerOptions().position(new LatLng(lat,lon)).title(title));
+            }
+
+            Circle c = mMap.addCircle(new CircleOptions()
+                    .center(new LatLng(location.getLatitude(), location.getLongitude()))
+                    .radius(userRadius * 1609.34)
+                    .strokeWidth(1)
+                    .strokeColor(Color.BLUE));
+
+
+                }
+        catch (ParseException e) {
+            e.printStackTrace();
         }
     }
 
@@ -364,8 +401,10 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
         }
 
         ParseGeoPoint parseLocation = new ParseGeoPoint(location.getLatitude(),location.getLongitude());
+        final int userRadius = currentUser.getInt("defaultRadius");
+        float userMinRating = (float)currentUser.getDouble("minimumRating");
         ParseQuery<ParseObject> query = ParseQuery.getQuery("markerInfo");
-        query.whereWithinMiles("coordinates",parseLocation,10);
+        query.whereWithinMiles("coordinates",parseLocation,userRadius);
         try {
             final List tempList = query.find();
             Handler mainHandler = new Handler(getMainLooper());
@@ -373,7 +412,7 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
                 @Override
                 public void run()
                 {
-
+                    mMap.clear();
                     for(int i = 0; i < tempList.size();i++){
                         //ParseObject tempty = (ParseObject)tempList.get(i);
                         
@@ -384,6 +423,14 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
                         double rating = pObj.getDouble("rating");
                         Marker m = mMap.addMarker(new MarkerOptions().position(new LatLng(lat,lon)).title(title));
                     }
+
+                    Circle c = mMap.addCircle(new CircleOptions()
+                            .center(new LatLng(location.getLatitude(),location.getLongitude()))
+                            .radius(userRadius *1609.34)
+                            .strokeWidth(1)
+                            .strokeColor(Color.BLUE));
+
+
                 }
 
                 //Log.i("tempList",""+tempty.getString("placeName"));
