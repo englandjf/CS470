@@ -34,6 +34,7 @@ public class infoScreen extends ActionBarActivity{
     List comments;
     double rating;
     String eventDescription;
+    ParseObject objectMarker;
 
     // I am a comment!
     //test
@@ -130,10 +131,10 @@ public class infoScreen extends ActionBarActivity{
                 if (e == null) {
                     dataLoaded = true;
 
-                    ParseObject temp = parseObjects.get(0);
-                    comments = temp.getList("comments");
-                    rating  = temp.getDouble("rating");
-                    eventDescription = temp.getString("Description");
+                    objectMarker = parseObjects.get(0);
+                    comments = objectMarker.getList("comments");
+                    rating  = objectMarker.getDouble("rating");
+                    eventDescription = objectMarker.getString("Description");
 
                     RatingBar rb = (RatingBar) findViewById(R.id.ratingBar);
                     rb.setRating((float)rating);
@@ -150,6 +151,7 @@ public class infoScreen extends ActionBarActivity{
 
     public void ButtonOnClick (View v) {
         Intent intent = new Intent(new Intent(infoScreen.this,addComment.class));
+        intent.putExtra("objectID",objectMarker.getObjectId());
         startActivity(intent);
     }
 
