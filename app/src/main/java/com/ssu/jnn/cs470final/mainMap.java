@@ -1,5 +1,6 @@
 package com.ssu.jnn.cs470final;
 
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -9,6 +10,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Network;
+import android.os.Handler;
 import android.provider.SyncStateContract;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -18,6 +20,9 @@ import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.Geofence;
+import com.google.android.gms.location.GeofencingRequest;
+import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -30,21 +35,27 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.parse.FindCallback;
 import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 //
-public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClickListener {
-
+public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClickListener{
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     private Marker temp;
 
     LocationManager mLocationManager;
 
     ParseUser currentUser;
+
+    Location location;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +66,7 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
         setContentView(R.layout.activity_main_map);
 
         currentUser = ParseUser.getCurrentUser();
+
 
         mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
@@ -67,6 +79,20 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
         String bestProvider = mLocationManager.getBestProvider(criteria, true);
 
         setUpMapIfNeeded();
+        /*
+        locationAssistant();
+        Timer myTimer = new Timer();
+        TimerTask TT = new TimerTask() {
+            @Override
+            public void run() {
+                Log.i("meow","yes");
+                locationAssistant();
+            }
+        };
+        myTimer.schedule(TT,0,5000);
+        */
+
+
 
         // Try to get GPS Location
         Location location = mLocationManager.getLastKnownLocation(bestProvider);
@@ -96,7 +122,70 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
                 Log.d("Location", "Network Location was null");
             }
         }
+
+        locationAssistant();
+        Timer myTimer = new Timer();
+        TimerTask TT = new TimerTask() {
+            @Override
+            public void run() {
+                Log.i("meow","yes");
+                locationAssistant();
+            }
+        };
+        myTimer.schedule(TT,0,5000);
+
+
+            /*
+        test = (new Geofence.Builder()
+                .setRequestId("first")
+                .setCircularRegion(14.3145601,121.1136661,1000)
+                .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_ENTER)
+                .build());
+
+        mGeofencePendingIntent = getGeofencePendingIntent();
+
+        */
+
+        ParseGeoPoint parseLocation = new ParseGeoPoint(location.getLatitude(),location.getLongitude());
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("markerInfo");
+        query.whereWithinMiles("coordinates",parseLocation,1);
+        try {
+            List tempList = query.find();
+            for(int i = 0; i < tempList.size();i++){
+                ParseObject tempty = (ParseObject)tempList.get(i);
+                Log.i("tempList",""+tempty.getString("placeName"));
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
+
+        //LocationServices.GeofencingApi.addGeofences(mGoogleApiClient,getGeofencingRequest(),getGeofencePendingIntent()).setResultCallback((com.google.android.gms.common.api.ResultCallback<com.google.android.gms.common.api.Status>) this);
+
+
+
     }
+
+    /*
+    private GeofencingRequest getGeofencingRequest(){
+        GeofencingRequest.Builder builder = new GeofencingRequest.Builder();
+        builder.setInitialTrigger(GeofencingRequest.INITIAL_TRIGGER_ENTER);
+        builder.addGeofence(test);
+        return builder.build();
+    }
+
+    private PendingIntent getGeofencePendingIntent() {
+        if(mGeofencePendingIntent != null)
+            return mGeofencePendingIntent;
+
+        Log.i("Pending Intent","meh");
+
+        return  PendingIntent.getService(this,0,new Intent(),PendingIntent.FLAG_UPDATE_CURRENT);
+    }
+    */
+
+
 
 
     @Override
@@ -104,6 +193,8 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
         super.onResume();
         setUpMapIfNeeded();
     }
+
+
 
 
     /**
@@ -207,6 +298,103 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
                 break;
         }
     }
+
+    void locationAssistant()
+    {
+        mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+        Criteria criteria = new Criteria();
+        criteria.setPowerRequirement(Criteria.POWER_HIGH);
+        criteria.setAccuracy(Criteria.ACCURACY_FINE);
+        criteria.setBearingAccuracy(Criteria.ACCURACY_FINE);
+        criteria.setSpeedAccuracy(Criteria.ACCURACY_LOW);
+        criteria.setAltitudeRequired(false);
+        String bestProvider = mLocationManager.getBestProvider(criteria, true);
+        // Try to get GPS Location
+        location = mLocationManager.getLastKnownLocation(bestProvider);
+        if (location != null) {
+            // We got one; Use it.
+            Log.d("Location Provider", bestProvider);
+            Log.d("Location-Lat", "" + location.getLatitude());
+            Log.d("Location-Long", "" + location.getLongitude());
+
+            final LatLng temp = new LatLng(location.getLatitude(),location.getLongitude());
+
+            Handler mainHandler = new Handler(getMainLooper());
+            mainHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(temp, 15.0f));
+                }
+            });
+            //mMap.moveCamera(CameraUpdateFactory.newLatLng(temp));
+            //mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(temp, 15.0f));
+        }
+        else {
+            // No Location received, try using Network.
+            Log.d("Location", "GPS Location was null");
+            location = mLocationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            if (location != null) {
+                Log.d("Location Provider", LocationManager.NETWORK_PROVIDER);
+                Log.d("Location-Lat", "" + location.getLatitude());
+                Log.d("Location-Long", "" + location.getLongitude());
+
+                final LatLng temp = new LatLng(location.getLatitude(), location.getLongitude());
+                Handler mainHandler = new Handler(getMainLooper());
+                mainHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(temp, 15.0f));
+                    }
+                });
+                //mMap.moveCamera(CameraUpdateFactory.newLatLng(temp));
+               // mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(temp, 15.0f));
+            }
+            else {
+                // That didn't work either; give up.
+                Log.d("Location", "Network Location was null");
+            }
+        }
+    }
+
+    //ADDED
+    /*
+    @Override
+    public void onConnected(Bundle bundle) {
+
+    }
+
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+
+    }
+    */
 }
 
 
