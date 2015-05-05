@@ -146,6 +146,7 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
 
         */
 
+        /*
         ParseGeoPoint parseLocation = new ParseGeoPoint(location.getLatitude(),location.getLongitude());
         ParseQuery<ParseObject> query = ParseQuery.getQuery("markerInfo");
         query.whereWithinMiles("coordinates",parseLocation,1);
@@ -158,6 +159,7 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        */
 
 
 
@@ -354,6 +356,19 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
                 // That didn't work either; give up.
                 Log.d("Location", "Network Location was null");
             }
+        }
+
+        ParseGeoPoint parseLocation = new ParseGeoPoint(location.getLatitude(),location.getLongitude());
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("markerInfo");
+        query.whereWithinMiles("coordinates",parseLocation,1);
+        try {
+            List tempList = query.find();
+            for(int i = 0; i < tempList.size();i++){
+                ParseObject tempty = (ParseObject)tempList.get(i);
+                Log.i("tempList",""+tempty.getString("placeName"));
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
     }
 

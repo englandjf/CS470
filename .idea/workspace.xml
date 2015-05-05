@@ -110,18 +110,18 @@
       <file leaf-file-name="mainMap.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssu/jnn/cs470final/mainMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.20319635" vertical-offset="5351" max-vertical-offset="6902">
-              <caret line="320" column="18" selection-start-line="320" selection-start-column="18" selection-end-line="320" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.70547944" vertical-offset="5998" max-vertical-offset="7157">
+              <caret line="371" column="9" selection-start-line="371" selection-start-column="9" selection-end-line="371" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4672#4841#0" expanded="true" />
                 <element signature="e#4830#4831#0" expanded="true" />
-                <element signature="e#8672#9985#0" expanded="true" />
-                <element signature="e#9974#9975#0" expanded="true" />
-                <element signature="e#12365#12563#0" expanded="true" />
-                <element signature="e#12548#12549#0" expanded="true" />
-                <element signature="e#13400#13618#0" expanded="true" />
-                <element signature="e#13599#13600#0" expanded="true" />
+                <element signature="e#8694#10007#0" expanded="true" />
+                <element signature="e#9996#9997#0" expanded="true" />
+                <element signature="e#12387#12585#0" expanded="true" />
+                <element signature="e#12570#12571#0" expanded="true" />
+                <element signature="e#13422#13640#0" expanded="true" />
+                <element signature="e#13621#13622#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2122,7 +2122,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3888889" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2638889" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33472222" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33472222" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2577121" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -2625,18 +2625,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssu/jnn/cs470final/mainMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20319635" vertical-offset="5351" max-vertical-offset="6902">
-          <caret line="320" column="18" selection-start-line="320" selection-start-column="18" selection-end-line="320" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.70547944" vertical-offset="5998" max-vertical-offset="7157">
+          <caret line="371" column="9" selection-start-line="371" selection-start-column="9" selection-end-line="371" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4672#4841#0" expanded="true" />
             <element signature="e#4830#4831#0" expanded="true" />
-            <element signature="e#8672#9985#0" expanded="true" />
-            <element signature="e#9974#9975#0" expanded="true" />
-            <element signature="e#12365#12563#0" expanded="true" />
-            <element signature="e#12548#12549#0" expanded="true" />
-            <element signature="e#13400#13618#0" expanded="true" />
-            <element signature="e#13599#13600#0" expanded="true" />
+            <element signature="e#8694#10007#0" expanded="true" />
+            <element signature="e#9996#9997#0" expanded="true" />
+            <element signature="e#12387#12585#0" expanded="true" />
+            <element signature="e#12570#12571#0" expanded="true" />
+            <element signature="e#13422#13640#0" expanded="true" />
+            <element signature="e#13621#13622#0" expanded="true" />
           </folding>
         </state>
       </provider>
