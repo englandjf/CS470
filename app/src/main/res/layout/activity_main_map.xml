@@ -11,25 +11,11 @@
     android:name="com.google.android.gms.maps.SupportMapFragment" />
 
 
-
-
-    <ImageButton
-    android:id="@+id/settingsButton"
-    android:layout_width="64dp"
-    android:layout_height="64dp"
-    android:layout_gravity="right|top"
-    android:layout_marginTop="5dp"
-    android:layout_marginRight="11dp"
-    android:text="Settings"
-    android:background="@null"
-    android:onClick="ButtonOnClick"
-        android:src="@mipmap/gear" />
-
     <ImageButton
         android:id="@+id/addButton"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:layout_gravity="left|top"
+        android:layout_gravity="left|bottom"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="11dp"
         android:text="Add Marker"
@@ -37,4 +23,16 @@
         android:onClick="ButtonOnClick"
         android:src="@mipmap/add"
         android:cropToPadding="false" />
+
+    <ImageButton
+    android:id="@+id/settingsButton"
+    android:layout_width="64dp"
+    android:layout_height="64dp"
+    android:layout_gravity="right|bottom"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="11dp"
+    android:text="Settings"
+    android:background="@null"
+    android:onClick="ButtonOnClick"
+        android:src="@mipmap/gear" />
 </FrameLayout>

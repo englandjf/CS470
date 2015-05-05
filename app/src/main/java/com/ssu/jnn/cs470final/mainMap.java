@@ -376,6 +376,7 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
 
                     for(int i = 0; i < tempList.size();i++){
                         //ParseObject tempty = (ParseObject)tempList.get(i);
+                        
                         ParseObject pObj = (ParseObject) tempList.get(i);
                         double lat = pObj.getParseGeoPoint("coordinates").getLatitude();
                         double lon = pObj.getParseGeoPoint("coordinates").getLongitude();
