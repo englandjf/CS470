@@ -236,6 +236,7 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
     private void setUpMap() {
         mMap.setOnMarkerClickListener(this);
 
+        /*
         ParseQuery<ParseObject> query = ParseQuery.getQuery("markerInfo");
         query.findInBackground(new FindCallback<ParseObject>() {
            public void done(List<ParseObject> parseObjects, com.parse.ParseException e) {
@@ -255,19 +256,23 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
                        double rating = pObj.getDouble("rating");
 
                        Marker m = mMap.addMarker(new MarkerOptions().position(new LatLng(lat,lon)).title(title));
+
                        Circle c = mMap.addCircle(new CircleOptions()
                                .center(new LatLng(lat,lon))
                                .radius(circleRadius + rating * 100)
                                .strokeWidth(1)
                                .strokeColor(Color.RED));
 
+
                    }
                }
             }
         });
+                    */
         // Format for markers.
         //Marker temp1 = mMap.addMarker(new MarkerOptions().position(new LatLng(38.341104, -122.674610)).title("Sonoma State University"));
         //Marker temp2 = mMap.addMarker(new MarkerOptions().position(new LatLng(38.344508, -122.711653)).title("McDonalds"));
+
     }
 
 
@@ -362,11 +367,26 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
         ParseQuery<ParseObject> query = ParseQuery.getQuery("markerInfo");
         query.whereWithinMiles("coordinates",parseLocation,1);
         try {
-            List tempList = query.find();
-            for(int i = 0; i < tempList.size();i++){
-                ParseObject tempty = (ParseObject)tempList.get(i);
-                Log.i("tempList",""+tempty.getString("placeName"));
-            }
+            final List tempList = query.find();
+            Handler mainHandler = new Handler(getMainLooper());
+            mainHandler.post(new Runnable(){
+                @Override
+                public void run()
+                {
+
+                    for(int i = 0; i < tempList.size();i++){
+                        //ParseObject tempty = (ParseObject)tempList.get(i);
+                        ParseObject pObj = (ParseObject) tempList.get(i);
+                        double lat = pObj.getParseGeoPoint("coordinates").getLatitude();
+                        double lon = pObj.getParseGeoPoint("coordinates").getLongitude();
+                        String title = pObj.getString("placeName");
+                        double rating = pObj.getDouble("rating");
+                        Marker m = mMap.addMarker(new MarkerOptions().position(new LatLng(lat,lon)).title(title));
+                    }
+                }
+
+                //Log.i("tempList",""+tempty.getString("placeName"));
+            });
         } catch (ParseException e) {
             e.printStackTrace();
         }
