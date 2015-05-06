@@ -213,8 +213,16 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
 
     void redrawMap () {
         ParseGeoPoint parseLocation = new ParseGeoPoint(location.getLatitude(),location.getLongitude());
-        final int userRadius = currentUser.getInt("defaultRadius");
-        float userMinRating = (float)currentUser.getDouble("minimumRating");
+        final int userRadius;
+        final float userMinRating;
+        if(currentUser != null) {
+            userRadius = currentUser.getInt("defaultRadius");
+            userMinRating = (float)currentUser.getDouble("minimumRating");
+        }
+        else{
+            userRadius = 25;
+            userMinRating = 2.5f;
+        }
         ParseQuery<ParseObject> query = ParseQuery.getQuery("markerInfo");
         query.whereWithinMiles("coordinates",parseLocation,userRadius);
         try {
@@ -302,8 +310,18 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
         }
 
         ParseGeoPoint parseLocation = new ParseGeoPoint(location.getLatitude(),location.getLongitude());
-        final int userRadius = currentUser.getInt("defaultRadius");
-        final float userMinRating = (float)currentUser.getDouble("minimumRating");
+        //final int userRadius = currentUser.getInt("defaultRadius");
+        //final float userMinRating = (float)currentUser.getDouble("minimumRating");
+        final int userRadius;
+        final float userMinRating;
+        if(currentUser != null) {
+            userRadius = currentUser.getInt("defaultRadius");
+            userMinRating = (float)currentUser.getDouble("minimumRating");
+        }
+        else{
+            userRadius = 25;
+            userMinRating = 2.5f;
+        }
         ParseQuery<ParseObject> query = ParseQuery.getQuery("markerInfo");
         query.whereWithinMiles("coordinates",parseLocation,userRadius);
         try {
