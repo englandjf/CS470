@@ -215,13 +215,16 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
         ParseGeoPoint parseLocation = new ParseGeoPoint(location.getLatitude(),location.getLongitude());
         final int userRadius;
         final float userMinRating;
+        final List userInterests;
         if(currentUser != null) {
             userRadius = currentUser.getInt("defaultRadius");
             userMinRating = (float)currentUser.getDouble("minimumRating");
+            userInterests = currentUser.getList("currentInterests");
         }
         else{
             userRadius = 25;
             userMinRating = 2.5f;
+            userInterests = null;
         }
         ParseQuery<ParseObject> query = ParseQuery.getQuery("markerInfo");
         query.whereWithinMiles("coordinates",parseLocation,userRadius);
@@ -234,8 +237,17 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
                 double lon = pObj.getParseGeoPoint("coordinates").getLongitude();
                 String title = pObj.getString("placeName");
                 double rating = pObj.getDouble("rating");
+                String category = pObj.getString("category");
                 if (rating >= userMinRating) {
-                    mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lon)).title(title));
+                    if (userInterests == null) {
+                        mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lon)).title(title));
+                    }
+                    else if (userInterests.contains(category)) {
+                        mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lon)).title(title));
+                    }
+                    else {
+                        // Do Nothing, this marker should not be displayed.
+                    }
                 }
             }
 
@@ -314,13 +326,16 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
         //final float userMinRating = (float)currentUser.getDouble("minimumRating");
         final int userRadius;
         final float userMinRating;
+        final List userInterests;
         if(currentUser != null) {
             userRadius = currentUser.getInt("defaultRadius");
             userMinRating = (float)currentUser.getDouble("minimumRating");
+            userInterests = currentUser.getList("currentInterests");
         }
         else{
             userRadius = 25;
             userMinRating = 2.5f;
+            userInterests = null;
         }
         ParseQuery<ParseObject> query = ParseQuery.getQuery("markerInfo");
         query.whereWithinMiles("coordinates",parseLocation,userRadius);
@@ -338,10 +353,18 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
                         double lon = pObj.getParseGeoPoint("coordinates").getLongitude();
                         String title = pObj.getString("placeName");
                         double rating = pObj.getDouble("rating");
+                        String category = pObj.getString("category");
                         if (rating >= userMinRating) {
-                            mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lon)).title(title));
+                            if (userInterests == null) {
+                                mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lon)).title(title));
+                            }
+                            else if (userInterests.contains(category)) {
+                                mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lon)).title(title));
+                            }
+                            else {
+                                // Do Nothing, this marker should not be displayed. 
+                            }
                         }
-
                         Circle c = mMap.addCircle(new CircleOptions()
                                 .center(new LatLng(location.getLatitude(), location.getLongitude()))
                                 .radius(userRadius * 1609.34)

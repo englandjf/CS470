@@ -84,7 +84,14 @@ public class preferences extends ActionBarActivity {
             //currentUser = ParseUser.getCurrentUser();
             List interests = currentUser.getList("currentInterests");
             for (int i = 0; i < interests.size(); i++) {
-                allBoxes[i].setChecked((boolean)interests.get(i));
+                for (int j = 0; j < 13; j++) {
+                    Log.d("Interest",interests.get(i).toString());
+                    Log.d("CheckBox",allBoxes[j].getText().toString());
+                    Log.d("--", "--");
+                    if ((interests.get(i).toString()).equals(allBoxes[j].getText().toString())) {
+                        allBoxes[j].setChecked(true);
+                    }
+                }
             }
             defaultRadiusBar.setProgress(currentUser.getInt("defaultRadius"));
             minRatingBar.setRating((float)currentUser.getDouble("minimumRating"));
@@ -129,24 +136,20 @@ public class preferences extends ActionBarActivity {
                 finish();
                 break;
             case R.id.updatePrefs:
-
-                boolean temp[] = new boolean[13];
+                JSONArray values = new JSONArray();
+                //String temp[] = new String[13];
                 for(int i = 0; i < 13; i++) {
-                    temp[i] = allBoxes[i].isChecked();
+                    if (allBoxes[i].isChecked()) {
+                        Log.d("value", allBoxes[i].getText().toString());
+                        values.put(allBoxes[i].getText().toString());
+                    }
                 }
-                final JSONArray values;
-                try {
-                    values = new JSONArray(temp);
-                    currentUser.put("defaultRadius", defaultRadiusBar.getProgress());
-                    currentUser.put("currentInterests",values);
-                    currentUser.put("minimumRating", minRatingBar.getRating());
-                    currentUser.saveInBackground();
-                    //currentUser.save();
-                    finish();
-                }
-                catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                currentUser.put("defaultRadius", defaultRadiusBar.getProgress());
+                currentUser.put("currentInterests",values);
+                currentUser.put("minimumRating", minRatingBar.getRating());
+                currentUser.saveInBackground();
+                //currentUser.save();
+                finish();
                 break;
             case R.id.loginButton:
                 //two cases depending if the person is logged in
