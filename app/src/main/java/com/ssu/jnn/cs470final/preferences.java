@@ -49,7 +49,7 @@ public class preferences extends ActionBarActivity {
         setContentView(R.layout.activity_preferences);
 
         //Store all checkboxes in array
-        allBoxes = new CheckBox[13];
+        allBoxes = new CheckBox[14];
         allBoxes[0] = (CheckBox)findViewById(R.id.comedyCheck);
         allBoxes[1] = (CheckBox)findViewById(R.id.charityCheck);
         allBoxes[2] = (CheckBox)findViewById(R.id.foodCheck);
@@ -63,6 +63,7 @@ public class preferences extends ActionBarActivity {
         allBoxes[10] = (CheckBox)findViewById(R.id.shoppingCheck);
         allBoxes[11] = (CheckBox)findViewById(R.id.sportsCheck);
         allBoxes[12] = (CheckBox)findViewById(R.id.theatreCheck);
+        allBoxes[13] = (CheckBox)findViewById(R.id.otherCheck);
 
         //Get Buttons
         loginOutButton = (Button)findViewById(R.id.loginButton);
@@ -84,10 +85,7 @@ public class preferences extends ActionBarActivity {
             //currentUser = ParseUser.getCurrentUser();
             List interests = currentUser.getList("currentInterests");
             for (int i = 0; i < interests.size(); i++) {
-                for (int j = 0; j < 13; j++) {
-                    Log.d("Interest",interests.get(i).toString());
-                    Log.d("CheckBox",allBoxes[j].getText().toString());
-                    Log.d("--", "--");
+                for (int j = 0; j < 14; j++) {
                     if ((interests.get(i).toString()).equals(allBoxes[j].getText().toString())) {
                         allBoxes[j].setChecked(true);
                     }
@@ -138,7 +136,7 @@ public class preferences extends ActionBarActivity {
             case R.id.updatePrefs:
                 JSONArray values = new JSONArray();
                 //String temp[] = new String[13];
-                for(int i = 0; i < 13; i++) {
+                for(int i = 0; i < 14; i++) {
                     if (allBoxes[i].isChecked()) {
                         Log.d("value", allBoxes[i].getText().toString());
                         values.put(allBoxes[i].getText().toString());

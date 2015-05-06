@@ -57,6 +57,7 @@ public class addMarker extends ActionBarActivity implements DatePickerDialog.OnD
         categoriesArray.add("Shopping");
         categoriesArray.add("Sports");
         categoriesArray.add("Theatre");
+        categoriesArray.add("Other");
 
         Spinner spinner = (Spinner) findViewById(R.id.categories);
         ArrayAdapter<String> categoriesArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, categoriesArray);

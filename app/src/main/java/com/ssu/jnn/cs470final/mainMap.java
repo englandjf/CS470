@@ -362,7 +362,7 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
                                 mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lon)).title(title));
                             }
                             else {
-                                // Do Nothing, this marker should not be displayed. 
+                                // Do Nothing, this marker should not be displayed.
                             }
                         }
                         Circle c = mMap.addCircle(new CircleOptions()

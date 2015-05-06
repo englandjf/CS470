@@ -34,6 +34,7 @@ public class infoScreen extends ActionBarActivity{
     List comments;
     double rating;
     String eventDescription;
+    String category;
     ParseObject objectMarker;
 
     // I am a comment!
@@ -134,12 +135,16 @@ public class infoScreen extends ActionBarActivity{
                     objectMarker = parseObjects.get(0);
                     comments = objectMarker.getList("comments");
                     rating  = objectMarker.getDouble("rating");
+                    category = objectMarker.getString("category");
+
                     eventDescription = objectMarker.getString("Description");
 
                     RatingBar rb = (RatingBar) findViewById(R.id.ratingBar);
                     rb.setRating((float)rating);
                     TextView descTextView = (TextView) findViewById(R.id.eventDescriptionText);
                     descTextView.setText(eventDescription);
+                    TextView categoryView = (TextView) findViewById(R.id.categoryView);
+                    categoryView.setText(category);
 
                 } else {
                     Log.d("score", "Error: " + e.getMessage());
