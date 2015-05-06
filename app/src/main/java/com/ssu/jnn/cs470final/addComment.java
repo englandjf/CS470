@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -94,26 +95,12 @@ public class addComment extends ActionBarActivity {
                         parseObject.put("commentRating",allRatings);
                         int numRatings = allRatings.size();
                         float ratingSum = 0.0f;
-                        float theRating;
                         for (int i = 0; i < numRatings; i++) {
-                            theRating = (float)allRatings.get(i);
-                            ratingSum = ratingSum + theRating;
-                            //ratingSum = ratingSum + (double)allRatings.get(i);
+                            Number oneRating = (Number)allRatings.get(i);
+                            ratingSum = ratingSum + oneRating.floatValue();
                         }
                         float newEventRating = ratingSum/numRatings;
                         parseObject.put("rating", newEventRating);
-                    }
-                    else {
-                        double allRatings2[] = new double[1];
-                        allRatings2[0] = theRating.getRating();
-                        try {
-                            JSONArray allRatings3 = new JSONArray(allRatings2);
-                            parseObject.put("commentRating",allRatings3);
-                            parseObject.put("rating", allRatings2[0] + 3 / 2);
-                        }
-                        catch (JSONException e1) {
-                            e1.printStackTrace();
-                        }
                     }
                     parseObject.saveInBackground();
                     finish();

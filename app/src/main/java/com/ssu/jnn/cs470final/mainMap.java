@@ -196,13 +196,10 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
     public void ButtonOnClick(View v) {
         switch (v.getId()) {
             case R.id.settingsButton:
-                Log.i("Clicked", "1");
-
                 Intent prefIntent = new Intent(new Intent(mainMap.this, preferences.class));
                 startActivityForResult(prefIntent, 1);
                 break;
             case R.id.addButton:
-                Log.i("Clicked", "2");
                 Intent addMarkerIntent = new Intent(new Intent(mainMap.this, addMarker.class));
                 startActivityForResult(addMarkerIntent, 1);
                 break;
@@ -211,12 +208,10 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.wtf("In OnActivityResult", "a");
         redrawMap();
     }
 
     void redrawMap () {
-        Log.wtf("redrawing", "a");
         ParseGeoPoint parseLocation = new ParseGeoPoint(location.getLatitude(),location.getLongitude());
         final int userRadius = currentUser.getInt("defaultRadius");
         float userMinRating = (float)currentUser.getDouble("minimumRating");
@@ -231,7 +226,9 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
                 double lon = pObj.getParseGeoPoint("coordinates").getLongitude();
                 String title = pObj.getString("placeName");
                 double rating = pObj.getDouble("rating");
-                mMap.addMarker(new MarkerOptions().position(new LatLng(lat,lon)).title(title));
+                if (rating >= userMinRating) {
+                    mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lon)).title(title));
+                }
             }
 
             Circle c = mMap.addCircle(new CircleOptions()

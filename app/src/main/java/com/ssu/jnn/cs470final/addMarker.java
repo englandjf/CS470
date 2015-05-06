@@ -23,6 +23,9 @@ import android.widget.TimePicker;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -182,6 +185,11 @@ public class addMarker extends ActionBarActivity implements DatePickerDialog.OnD
         newMarker.put("category", categoryField.getSelectedItem().toString());
         newMarker.put("Description", descriptionField.getText().toString());
         newMarker.put("coordinates", new ParseGeoPoint(latitude,longitude));
+        try {
+            newMarker.put("commentRating", new JSONArray(new float[]{3}));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         newMarker.put("rating", 3);
         //newMarker.put("startDate", startDateTime);
         newMarker.saveInBackground();
