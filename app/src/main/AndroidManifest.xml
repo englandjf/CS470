@@ -19,6 +19,8 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:name=".mainMenu"
             android:label="@string/app_name" >
         </activity>
@@ -34,14 +36,20 @@
             android:value="@string/google_maps_key" />
 
         <activity
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:name=".infoScreen"
             android:label="@string/title_activity_info_screen" >
         </activity>
         <activity
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:name=".commentView"
             android:label="@string/title_activity_comment_view" >
         </activity>
         <activity
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:name=".mainMap"
             android:label="@string/app_name" >
             <intent-filter>
@@ -51,22 +59,32 @@
             </intent-filter>
         </activity>
         <activity
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:name=".preferences"
             android:label="@string/title_activity_preferences" >
         </activity>
         <activity
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:name=".addMarker"
             android:label="@string/title_activity_add_marker" >
         </activity>
         <activity
             android:name=".signUp"
-            android:label="@string/title_activity_sign_up" >
+            android:label="@string/title_activity_sign_up"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
         <activity
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:name=".loginPage"
             android:label="@string/title_activity_login_page" >
         </activity>
         <activity
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:name=".addComment"
             android:label="@string/title_activity_add_comment" >
         </activity>

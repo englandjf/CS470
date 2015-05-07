@@ -1,6 +1,7 @@
 package com.ssu.jnn.cs470final;
 
 import android.annotation.TargetApi;
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
@@ -36,6 +37,7 @@ public class addComment extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_comment);
+
         Intent intent = getIntent();
         objectID = intent.getStringExtra("objectID");
         addComment = (Button)findViewById(R.id.addComment);

@@ -5,8 +5,8 @@
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_main_map">Map</string>
     <string name="google_maps_key">test</string>
-    <string name="title_activity_info_screen">infoScreen</string>
-    <string name="title_activity_comment_view">commentView</string>
+    <string name="title_activity_info_screen">Event Details</string>
+    <string name="title_activity_comment_view">Comments</string>
     <string name="title_activity_main_menu">mainMenu</string>
     <string name="title_activity_preferences">Preferences</string>
     <string name="title_activity_add_marker">Add Marker</string>
@@ -14,9 +14,9 @@
 
     <string name="preferences_interests">Your Interests:</string>
     <string name="preferences_radius">Event Radius:</string>
-    <string name="title_activity_login_page">loginPage</string>
+    <string name="title_activity_login_page">Login</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_add_comment">addComment</string>
+    <string name="title_activity_add_comment">Add Comment</string>
 
 </resources>

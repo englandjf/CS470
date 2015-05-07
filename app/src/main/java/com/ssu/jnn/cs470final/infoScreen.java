@@ -96,7 +96,7 @@ public class infoScreen extends ActionBarActivity{
 
             // TODO Auto-generated method stub
             //left
-            if((e1.getX() - e2.getX()) > sensitvity && dataLoaded){
+            if((e1.getX() - e2.getX()) > sensitvity && dataLoaded && comments != null){
                 String [] listArray = new String[comments.size()];
                 for(int i = 0; i < comments.size();i++) {
                     listArray[i] = comments.get(i).toString();
