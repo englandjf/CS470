@@ -85,6 +85,7 @@ public class infoScreen extends ActionBarActivity{
         return gestureDetector.onTouchEvent(event);
     }
 
+
     GestureDetector.SimpleOnGestureListener simpleOnGestureListener
             = new GestureDetector.SimpleOnGestureListener(){
 
@@ -160,8 +161,12 @@ public class infoScreen extends ActionBarActivity{
         startActivity(intent);
     }
 
+
+
     GestureDetector gestureDetector
             = new GestureDetector(simpleOnGestureListener);
+
+
 
 
 }

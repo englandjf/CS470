@@ -1,11 +1,14 @@
 package com.ssu.jnn.cs470final;
 
+import android.content.Intent;
 import android.os.Debug;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -53,5 +56,47 @@ public class commentView extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //http://android-er.blogspot.com/2011/11/detect-swipe-using-simpleongestureliste.html
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        // TODO Auto-generated method stub
+        return gestureDetector.onTouchEvent(event);
+    }
+
+
+    GestureDetector.SimpleOnGestureListener simpleOnGestureListener
+            = new GestureDetector.SimpleOnGestureListener(){
+
+
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
+                               float velocityY) {
+            float sensitvity = 50;
+
+            // TODO Auto-generated method stub
+            //left
+            if((e1.getX() - e2.getX()) > sensitvity){
+
+            }
+            //right
+            else if((e2.getX() - e1.getX()) > sensitvity){
+                finish();
+            }
+
+            //up
+            if((e1.getY() - e2.getY()) > sensitvity){
+            }
+            //down
+            else if((e2.getY() - e1.getY()) > sensitvity){
+            }
+
+
+
+            return super.onFling(e1, e2, velocityX, velocityY);
+        }
+    };
+
+    GestureDetector gestureDetector
+            = new GestureDetector(simpleOnGestureListener);
 
 }
