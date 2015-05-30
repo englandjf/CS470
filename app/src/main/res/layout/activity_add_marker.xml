@@ -89,7 +89,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:paddingLeft="4dp"
-        android:layout_toStartOf="@+id/categories" />
+        android:layout_toStartOf="@+id/categories"
+        android:visibility="invisible" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -102,7 +103,8 @@
         android:clickable="true"
         android:layout_alignRight="@+id/address"
         android:layout_alignEnd="@+id/address"
-        android:onClick="OnDateSelect"/>
+        android:onClick="OnDateSelect"
+        android:visibility="invisible" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -115,7 +117,8 @@
         android:layout_alignParentStart="true"
         android:layout_toLeftOf="@+id/dateText"
         android:layout_toStartOf="@+id/dateText"
-        android:paddingLeft="4dp" />
+        android:paddingLeft="4dp"
+        android:visibility="invisible" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -127,7 +130,8 @@
         android:layout_toRightOf="@+id/dateLabel"
         android:layout_alignRight="@+id/dateText"
         android:layout_alignEnd="@+id/dateText"
-        android:onClick="OnTimeSelect"/>
+        android:onClick="OnTimeSelect"
+        android:visibility="invisible" />
 
 
 </RelativeLayout>

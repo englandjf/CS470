@@ -28,7 +28,7 @@
     android:id="@+id/settingsButton"
     android:layout_width="64dp"
     android:layout_height="64dp"
-    android:layout_gravity="right|bottom"
+    android:layout_gravity="center_horizontal|bottom"
     android:layout_marginTop="5dp"
     android:layout_marginRight="11dp"
     android:text="Settings"

@@ -94,6 +94,7 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
         mMap.setMyLocationEnabled(true);
 
 
+
         // Try to get GPS Location
         Location location = mLocationManager.getLastKnownLocation(bestProvider);
         if (location != null) {
@@ -208,27 +209,25 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         redrawMap();
     }
 
     void redrawMap () {
         ParseGeoPoint parseLocation = new ParseGeoPoint(location.getLatitude(),location.getLongitude());
-        final int userRadius;
-        final float userMinRating;
-        final List userInterests;
+        int userRadius = 25;
+        float userMinRating = 2.5f;
+        List userInterests = null;
         if(currentUser != null) {
             userRadius = currentUser.getInt("defaultRadius");
             userMinRating = (float)currentUser.getDouble("minimumRating");
             userInterests = currentUser.getList("currentInterests");
         }
-        else{
-            userRadius = 25;
-            userMinRating = 2.5f;
-            userInterests = null;
-        }
+
         ParseQuery<ParseObject> query = ParseQuery.getQuery("markerInfo");
         query.whereWithinMiles("coordinates",parseLocation,userRadius);
         try {
+            Log.i("test","try");
             final List tempList = query.find();
             mMap.clear();
             for(int i = 0; i < tempList.size();i++){
@@ -246,7 +245,7 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
                         mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lon)).title(title));
                     }
                     else {
-                        // Do Nothing, this marker should not be displayed.
+                        //Do Nothing, this marker should not be displayed.
                     }
                 }
             }
@@ -324,24 +323,23 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
         ParseGeoPoint parseLocation = new ParseGeoPoint(location.getLatitude(),location.getLongitude());
         //final int userRadius = currentUser.getInt("defaultRadius");
         //final float userMinRating = (float)currentUser.getDouble("minimumRating");
-        final int userRadius;
-        final float userMinRating;
-        final List userInterests;
+        int userRadius = 25;
+        float userMinRating = 2.5f;
+        List userInterests = null;
         if(currentUser != null) {
             userRadius = currentUser.getInt("defaultRadius");
             userMinRating = (float)currentUser.getDouble("minimumRating");
             userInterests = currentUser.getList("currentInterests");
         }
-        else{
-            userRadius = 25;
-            userMinRating = 2.5f;
-            userInterests = null;
-        }
+
         ParseQuery<ParseObject> query = ParseQuery.getQuery("markerInfo");
         query.whereWithinMiles("coordinates",parseLocation,userRadius);
         try {
             final List tempList = query.find();
             Handler mainHandler = new Handler(getMainLooper());
+            final int urTemp = userRadius;
+            final float umTemp = userMinRating;
+            final List uiTemp = userInterests;
             mainHandler.post(new Runnable(){
                 @Override
                 public void run()
@@ -354,11 +352,14 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
                         String title = pObj.getString("placeName");
                         double rating = pObj.getDouble("rating");
                         String category = pObj.getString("category");
-                        if (rating >= userMinRating) {
-                            if (userInterests == null) {
+
+
+
+                        if (rating >= umTemp) {
+                            if (uiTemp == null) {
                                 mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lon)).title(title));
                             }
-                            else if (userInterests.contains(category)) {
+                            else if (uiTemp.contains(category)) {
                                 mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lon)).title(title));
                             }
                             else {
@@ -367,7 +368,7 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
                         }
                         Circle c = mMap.addCircle(new CircleOptions()
                                 .center(new LatLng(location.getLatitude(), location.getLongitude()))
-                                .radius(userRadius * 1609.34)
+                                .radius(urTemp * 1609.34)
                                 .strokeWidth(1)
                                 .strokeColor(Color.BLUE));
                     }
