@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
@@ -168,10 +169,17 @@ public class addMarker extends ActionBarActivity implements DatePickerDialog.OnD
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());
         List<Address> addresses = null;
 
+        if(addressField.getText().length() == 0) {
+            Toast.makeText(this,"Empty Address",Toast.LENGTH_SHORT);
+            finish();
+        }
+
         try {
             addresses = geocoder.getFromLocationName(addressField.getText().toString(), 1);
         } catch (IOException e) {
             e.printStackTrace();
+            Toast.makeText(this,"Address not found",Toast.LENGTH_SHORT);
+            finish();
         }
         Address a = addresses.get(0);
         if(a != null) {

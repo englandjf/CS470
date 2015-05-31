@@ -209,7 +209,7 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
+        currentUser = ParseUser.getCurrentUser();
         redrawMap();
     }
 

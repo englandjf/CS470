@@ -97,7 +97,15 @@ public class preferences extends ActionBarActivity {
 
         } else {
             loggedIn = false;
-            prefButton.setClickable(false);
+            prefButton.setEnabled(false);
+            for(int i = 0 ; i < 14; i++) {
+                allBoxes[i].setChecked(true);
+                allBoxes[i].setEnabled(false);
+            }
+            minRatingBar.setEnabled(false);
+            defaultRadiusBar.setEnabled(false);
+            defaultRadiusBar.setProgress(25);
+
         }
 
     }
