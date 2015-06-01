@@ -129,11 +129,10 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
         TimerTask TT = new TimerTask() {
             @Override
             public void run() {
-                Log.i("meow","yes");
                 locationAssistant();
             }
         };
-        myTimer.schedule(TT,0,60000);
+        myTimer.schedule(TT,0,300000);
 
     }
 
