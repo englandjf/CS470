@@ -88,11 +88,52 @@
       <file leaf-file-name="AndroidManifest.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7519231" vertical-offset="153" max-vertical-offset="1700">
-              <caret line="32" column="66" selection-start-line="32" selection-start-column="66" selection-end-line="32" selection-end-column="66" />
+            <state vertical-scroll-proportion="-0.06538462" vertical-offset="306" max-vertical-offset="1700">
+              <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
               <folding>
-                <element signature="e#1634#1659#0" expanded="true" />
+                <element signature="e#946#964#0" expanded="true" />
+                <element signature="e#1210#1228#0" expanded="true" />
+                <element signature="e#1355#1394#0" expanded="true" />
+                <element signature="e#1685#1710#0" expanded="true" />
+                <element signature="e#1921#1957#0" expanded="true" />
+                <element signature="e#2187#2224#0" expanded="true" />
+                <element signature="e#2450#2468#0" expanded="true" />
+                <element signature="e#2902#2938#0" expanded="true" />
+                <element signature="e#3166#3201#0" expanded="true" />
+                <element signature="e#3303#3335#0" expanded="true" />
+                <element signature="e#3685#3720#0" expanded="true" />
+                <element signature="e#3949#3985#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.gradle" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="58" max-vertical-offset="578">
+              <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="styles.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.44" vertical-offset="0" max-vertical-offset="476">
+              <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -105,8 +146,9 @@
     </FindUsagesManager>
   </component>
   <component name="GenerateSignedApkSettings">
-    <option name="KEY_STORE_PATH" value="C:\Users\j\Desktop\eventSign.jks" />
+    <option name="KEY_STORE_PATH" value="C:\Users\j\Desktop\Eventures\eventSign.jks" />
     <option name="KEY_ALIAS" value="eventSign" />
+    <option name="REMEMBER_PASSWORDS" value="true" />
   </component>
   <component name="Git.Settings">
     <option name="SYNC_SETTING" value="DONT" />
@@ -1266,7 +1308,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="4286128146218" />
+        <entry key="$PROJECT_DIR$" value="4290350641429" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -1538,7 +1580,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/ssu/jnn/cs470final/mainScreen.java" />
         <option value="$PROJECT_DIR$/app/build/intermediates/manifests/full/debug/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/debug/res/values/google_maps_api.xml" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_comment_view.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main_menu.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ssu/jnn/cs470final/mainMenu.java" />
@@ -1559,6 +1600,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/ssu/jnn/cs470final/addMarker.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ssu/jnn/cs470final/mainMap.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
       </list>
     </option>
   </component>
@@ -1650,23 +1692,9 @@
               <option name="myItemId" value="CS470Final" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="CS470Final" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
+              <option name="myItemId" value="Gradle Scripts" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidBuildScriptsGroupNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -1677,78 +1705,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mipmap" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CS470Final" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CS470Final" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CS470Final" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CS470Final" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cs470final" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -1784,7 +1740,7 @@
     <property name="options.searchVisible" value="true" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="FullScreen" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Eventures/eventSign.jks" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi" />
@@ -2048,7 +2004,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2062,7 +2018,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.64555556" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26222223" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3911111" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3911111" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2553305" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -2110,20 +2066,23 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssu/jnn/cs470final/mainMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6613">
-          <caret line="134" column="32" selection-start-line="134" selection-start-column="32" selection-end-line="134" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="1700">
           <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
           <folding>
-            <element signature="e#1634#1659#0" expanded="true" />
+            <element signature="e#946#964#0" expanded="true" />
+            <element signature="e#1210#1228#0" expanded="true" />
+            <element signature="e#1355#1394#0" expanded="true" />
+            <element signature="e#1685#1710#0" expanded="true" />
+            <element signature="e#1921#1957#0" expanded="true" />
+            <element signature="e#2187#2224#0" expanded="true" />
+            <element signature="e#2450#2468#0" expanded="true" />
+            <element signature="e#2902#2938#0" expanded="true" />
+            <element signature="e#3166#3201#0" expanded="true" />
+            <element signature="e#3303#3335#0" expanded="true" />
+            <element signature="e#3685#3720#0" expanded="true" />
+            <element signature="e#3949#3985#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2141,7 +2100,18 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="131" max-vertical-offset="1700">
           <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
           <folding>
-            <element signature="e#1634#1659#0" expanded="true" />
+            <element signature="e#946#964#0" expanded="true" />
+            <element signature="e#1210#1228#0" expanded="true" />
+            <element signature="e#1355#1394#0" expanded="true" />
+            <element signature="e#1685#1710#0" expanded="true" />
+            <element signature="e#1921#1957#0" expanded="true" />
+            <element signature="e#2187#2224#0" expanded="true" />
+            <element signature="e#2450#2468#0" expanded="true" />
+            <element signature="e#2902#2938#0" expanded="true" />
+            <element signature="e#3166#3201#0" expanded="true" />
+            <element signature="e#3303#3335#0" expanded="true" />
+            <element signature="e#3685#3720#0" expanded="true" />
+            <element signature="e#3949#3985#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2253,7 +2223,18 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="799">
           <caret line="14" column="72" selection-start-line="14" selection-start-column="72" selection-end-line="14" selection-end-column="72" />
           <folding>
-            <element signature="e#1634#1659#0" expanded="true" />
+            <element signature="e#946#964#0" expanded="true" />
+            <element signature="e#1210#1228#0" expanded="true" />
+            <element signature="e#1355#1394#0" expanded="true" />
+            <element signature="e#1685#1710#0" expanded="true" />
+            <element signature="e#1921#1957#0" expanded="true" />
+            <element signature="e#2187#2224#0" expanded="true" />
+            <element signature="e#2450#2468#0" expanded="true" />
+            <element signature="e#2902#2938#0" expanded="true" />
+            <element signature="e#3166#3201#0" expanded="true" />
+            <element signature="e#3303#3335#0" expanded="true" />
+            <element signature="e#3685#3720#0" expanded="true" />
+            <element signature="e#3949#3985#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2277,7 +2258,18 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="144" max-vertical-offset="782">
           <caret line="32" column="68" selection-start-line="32" selection-start-column="68" selection-end-line="32" selection-end-column="68" />
           <folding>
-            <element signature="e#1634#1659#0" expanded="true" />
+            <element signature="e#946#964#0" expanded="true" />
+            <element signature="e#1210#1228#0" expanded="true" />
+            <element signature="e#1355#1394#0" expanded="true" />
+            <element signature="e#1685#1710#0" expanded="true" />
+            <element signature="e#1921#1957#0" expanded="true" />
+            <element signature="e#2187#2224#0" expanded="true" />
+            <element signature="e#2450#2468#0" expanded="true" />
+            <element signature="e#2902#2938#0" expanded="true" />
+            <element signature="e#3166#3201#0" expanded="true" />
+            <element signature="e#3303#3335#0" expanded="true" />
+            <element signature="e#3685#3720#0" expanded="true" />
+            <element signature="e#3949#3985#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2301,7 +2293,18 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="144" max-vertical-offset="782">
           <caret line="32" column="68" selection-start-line="32" selection-start-column="68" selection-end-line="32" selection-end-column="68" />
           <folding>
-            <element signature="e#1634#1659#0" expanded="true" />
+            <element signature="e#946#964#0" expanded="true" />
+            <element signature="e#1210#1228#0" expanded="true" />
+            <element signature="e#1355#1394#0" expanded="true" />
+            <element signature="e#1685#1710#0" expanded="true" />
+            <element signature="e#1921#1957#0" expanded="true" />
+            <element signature="e#2187#2224#0" expanded="true" />
+            <element signature="e#2450#2468#0" expanded="true" />
+            <element signature="e#2902#2938#0" expanded="true" />
+            <element signature="e#3166#3201#0" expanded="true" />
+            <element signature="e#3303#3335#0" expanded="true" />
+            <element signature="e#3685#3720#0" expanded="true" />
+            <element signature="e#3949#3985#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2325,7 +2328,18 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="544" max-vertical-offset="714">
           <caret line="32" column="66" selection-start-line="32" selection-start-column="66" selection-end-line="32" selection-end-column="66" />
           <folding>
-            <element signature="e#1634#1659#0" expanded="true" />
+            <element signature="e#946#964#0" expanded="true" />
+            <element signature="e#1210#1228#0" expanded="true" />
+            <element signature="e#1355#1394#0" expanded="true" />
+            <element signature="e#1685#1710#0" expanded="true" />
+            <element signature="e#1921#1957#0" expanded="true" />
+            <element signature="e#2187#2224#0" expanded="true" />
+            <element signature="e#2450#2468#0" expanded="true" />
+            <element signature="e#2902#2938#0" expanded="true" />
+            <element signature="e#3166#3201#0" expanded="true" />
+            <element signature="e#3303#3335#0" expanded="true" />
+            <element signature="e#3685#3720#0" expanded="true" />
+            <element signature="e#3949#3985#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2342,13 +2356,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
           <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="578">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -2465,14 +2472,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="476">
-          <caret line="1" column="37" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ssu/jnn/cs470final/preferences.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="952" max-vertical-offset="2669">
@@ -2529,12 +2528,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="520">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.44" vertical-offset="0" max-vertical-offset="476">
+          <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="58" max-vertical-offset="578">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7519231" vertical-offset="153" max-vertical-offset="1700">
-          <caret line="32" column="66" selection-start-line="32" selection-start-column="66" selection-end-line="32" selection-end-column="66" />
+        <state vertical-scroll-proportion="-0.06538462" vertical-offset="306" max-vertical-offset="1700">
+          <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
           <folding>
-            <element signature="e#1634#1659#0" expanded="true" />
+            <element signature="e#946#964#0" expanded="true" />
+            <element signature="e#1210#1228#0" expanded="true" />
+            <element signature="e#1355#1394#0" expanded="true" />
+            <element signature="e#1685#1710#0" expanded="true" />
+            <element signature="e#1921#1957#0" expanded="true" />
+            <element signature="e#2187#2224#0" expanded="true" />
+            <element signature="e#2450#2468#0" expanded="true" />
+            <element signature="e#2902#2938#0" expanded="true" />
+            <element signature="e#3166#3201#0" expanded="true" />
+            <element signature="e#3303#3335#0" expanded="true" />
+            <element signature="e#3685#3720#0" expanded="true" />
+            <element signature="e#3949#3985#0" expanded="true" />
           </folding>
         </state>
       </provider>
