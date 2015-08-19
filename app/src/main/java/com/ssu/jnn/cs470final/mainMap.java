@@ -10,6 +10,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Network;
+import android.os.Debug;
 import android.os.Handler;
 import android.provider.SyncStateContract;
 import android.support.v4.app.FragmentActivity;
@@ -188,6 +189,7 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
         Intent intent = new Intent(new Intent(mainMap.this, infoScreen.class));
         // Pass additional vars to the new class.
         intent.putExtra("mName", marker.getTitle());
+        intent.putExtra("dbName",selectedClass);
         startActivity(intent);
 
         return false;
@@ -223,7 +225,9 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
             userInterests = currentUser.getList("currentInterests");
         }
 
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("markerInfo");
+        checkLocationBoundary();
+
+        ParseQuery<ParseObject> query = ParseQuery.getQuery(selectedClass);
         query.whereWithinMiles("coordinates",parseLocation,userRadius);
         try {
             Log.i("test","try");
@@ -260,6 +264,50 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
         catch (ParseException e) {
             e.printStackTrace();
         }
+    }
+
+    String selectedClass; //= "markerInfo";
+    public class Boundary
+    {
+        public Boundary(double topLeft1,double topLeft2,double bottomRight1,double bottomRight2){
+            topLeftLat = topLeft1;
+            topLeftLong = topLeft2;
+            bottomRightLat = bottomRight1;
+            bottomRightLong = bottomRight2;
+        }
+        double topLeftLat;
+        double topLeftLong;
+        double bottomRightLat;
+        double bottomRightLong;
+    }
+
+    //Notes
+    /*
+        4 quadrants
+
+    */
+
+    void checkLocationBoundary() {
+        Log.i("Inside", ""+location.getLatitude() + " " + location.getLongitude() );
+        double currentLat = location.getLatitude();
+        double currentLong = location.getLongitude();
+        Boundary sfBoundary = new Boundary(37.798746,-122.514925,37.746546,-122.371869);
+        //san francisco boundary
+        if(withinLimits(sfBoundary,currentLat,currentLong))
+            selectedClass = "sanFrancisco";
+        else
+            selectedClass = "markerInfo";
+
+
+    }
+
+    Boolean withinLimits(Boundary a,double currentLat,double currentLong) {
+
+        //sf
+        if(currentLat <= a.topLeftLat && currentLat >= a.bottomRightLat && currentLong >= a.topLeftLong && currentLong <= a.bottomRightLong)
+            return true;
+        else
+            return false;
     }
 
     void locationAssistant()
@@ -319,6 +367,9 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
             }
         }
 
+        //sets DB class to use
+        checkLocationBoundary();
+
         ParseGeoPoint parseLocation = new ParseGeoPoint(location.getLatitude(),location.getLongitude());
         //final int userRadius = currentUser.getInt("defaultRadius");
         //final float userMinRating = (float)currentUser.getDouble("minimumRating");
@@ -331,7 +382,7 @@ public class mainMap extends FragmentActivity implements  GoogleMap.OnMarkerClic
             userInterests = currentUser.getList("currentInterests");
         }
 
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("markerInfo");
+        ParseQuery<ParseObject> query = ParseQuery.getQuery(selectedClass);
         query.whereWithinMiles("coordinates",parseLocation,userRadius);
         try {
             final List tempList = query.find();

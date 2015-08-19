@@ -36,6 +36,7 @@ public class infoScreen extends ActionBarActivity{
     String eventDescription;
     String category;
     ParseObject objectMarker;
+    String selectedClass;
 
     // I am a comment!
     //test
@@ -47,6 +48,7 @@ public class infoScreen extends ActionBarActivity{
         setContentView(R.layout.activity_info_screen);
         Bundle extras = getIntent().getExtras();
         markerName = extras.getString("mName");
+        selectedClass = extras.getString("dbName");
         tv = (TextView) findViewById(R.id.textView);
         tv.setText(markerName);
         //detect swipe
@@ -126,7 +128,7 @@ public class infoScreen extends ActionBarActivity{
     };
 
     private void getData() {
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("markerInfo");
+        ParseQuery<ParseObject> query = ParseQuery.getQuery(selectedClass);
         query.whereEqualTo("placeName", markerName);
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> parseObjects, com.parse.ParseException e) {
