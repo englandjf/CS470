@@ -160,6 +160,7 @@ public class infoScreen extends ActionBarActivity{
     public void ButtonOnClick (View v) {
         Intent intent = new Intent(new Intent(infoScreen.this,addComment.class));
         intent.putExtra("objectID",objectMarker.getObjectId());
+        intent.putExtra("sc",selectedClass);
         startActivity(intent);
     }
 

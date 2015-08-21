@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Build;
+import android.os.Debug;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,6 +33,7 @@ public class addComment extends ActionBarActivity {
     Button addComment;
     EditText commentIt;
     RatingBar theRating;
+    String selectedClass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class addComment extends ActionBarActivity {
 
         Intent intent = getIntent();
         objectID = intent.getStringExtra("objectID");
+        selectedClass = intent.getStringExtra("sc");
         addComment = (Button)findViewById(R.id.addComment);
         commentIt = (EditText)findViewById(R.id.actualComment);
         theRating = (RatingBar)findViewById(R.id.individualRating);
@@ -69,7 +72,8 @@ public class addComment extends ActionBarActivity {
     }
 
     public void OnButtonClick(View v){
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("markerInfo");
+        Log.i("selecteClass",""+selectedClass);
+        ParseQuery<ParseObject> query = ParseQuery.getQuery(selectedClass);
         query.getInBackground(objectID,new GetCallback<ParseObject>() {
             @TargetApi(Build.VERSION_CODES.KITKAT)
             @Override
@@ -109,6 +113,7 @@ public class addComment extends ActionBarActivity {
                 }
                 else{
                     //error
+                    Log.i("error","error");
                 }
             }
         });

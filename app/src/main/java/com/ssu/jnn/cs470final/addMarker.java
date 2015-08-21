@@ -193,6 +193,9 @@ public class addMarker extends ActionBarActivity implements DatePickerDialog.OnD
         Date startDateTime = new Date(sYr-1900, sMo-1, sDy-1, sHr+3, sMn);
 
 
+        //add code her to check which db we are in
+        //add to stop adding object if it is already there
+
         ParseObject newMarker = new ParseObject("markerInfo");
         newMarker.put("placeName", placeNameField.getText().toString());
         newMarker.put("category", categoryField.getSelectedItem().toString());
