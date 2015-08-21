@@ -23,23 +23,21 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Category:"
         android:id="@+id/categoryLabel"
+        android:paddingLeft="4dp"
         android:layout_below="@+id/markerName"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:paddingLeft="4dp" />
+        android:layout_toRightOf="@+id/dateLabel"
+        android:layout_toEndOf="@+id/dateLabel"
+        android:layout_marginTop="59dp" />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/categories"
-        android:layout_below="@+id/markerName"
         android:spinnerMode="dialog"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_toRightOf="@+id/categoryLabel"
-        android:layout_toEndOf="@+id/categoryLabel"
-        android:layout_alignBottom="@+id/categoryLabel"
-        android:paddingTop="2dp" />
+        android:paddingTop="2dp"
+        android:layout_below="@+id/categoryLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 
     <EditText
@@ -47,11 +45,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/address"
         android:hint="Address"
-        android:layout_below="@+id/categories"
+        android:layout_above="@+id/description"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignRight="@+id/description"
+        android:layout_alignEnd="@+id/description" />
 
 
 
@@ -64,11 +62,12 @@
         android:ems="10"
         android:id="@+id/description"
         android:hint="Description"
-        android:layout_below="@+id/timeLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_above="@+id/submitMarker"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="125dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -126,12 +125,12 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Select Time..."
         android:id="@+id/timeText"
-        android:layout_below="@+id/dateLabel"
-        android:layout_toRightOf="@+id/dateLabel"
-        android:layout_alignRight="@+id/dateText"
-        android:layout_alignEnd="@+id/dateText"
         android:onClick="OnTimeSelect"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        android:layout_below="@+id/description"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="57dp" />
 
 
 </RelativeLayout>

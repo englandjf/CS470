@@ -21,13 +21,16 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.parse.CountCallback;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -188,6 +191,7 @@ public class addMarker extends ActionBarActivity implements DatePickerDialog.OnD
         }
 
         Date startDateTime = new Date(sYr-1900, sMo-1, sDy-1, sHr+3, sMn);
+
 
         ParseObject newMarker = new ParseObject("markerInfo");
         newMarker.put("placeName", placeNameField.getText().toString());
